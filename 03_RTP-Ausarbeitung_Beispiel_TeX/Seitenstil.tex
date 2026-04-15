@@ -1,0 +1,31 @@
+% Kopf- und Fußzeilen ------------------------------------------------------
+\pagestyle{scrheadings}
+
+% Kopf- und Fußzeile auch auf Kapitelanfangsseiten -------------------------
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+% Schriftform der Kopfzeile ------------------------------------------------
+\renewcommand{\headfont}{%
+\normalfont
+}
+
+% Kopfzeile ----------------------------------------------------------------
+\ihead{Regelungstechnisches Praktikum (RTP)}
+\chead{}
+\ohead{\includegraphics[width=0.3\textwidth]{Bilder/oth-regensburg-logo}}
+%
+\setlength{\headheight}{21mm} % Höhe der Kopfzeile
+\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
+
+% Fußzeile -----------------------------------------------------------------
+\ifoot{Torsten Reitmeier/Klaus Falkner}
+\cfoot{\today}
+\ofoot{\pagemark}
+
+
+% erzeugt ein wenig mehr Platz hinter einem Punkt --------------------------
+\frenchspacing 
+
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000

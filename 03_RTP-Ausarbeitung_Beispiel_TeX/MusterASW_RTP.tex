@@ -1,0 +1,321 @@
+\documentclass[12pt, oneside, a4paper]{scrreprt}
+\usepackage[manualmark,headsepline,footsepline]{scrlayer-scrpage}
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %Grafik aktivieren
+\usepackage{float}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{pdfcomment}
+
+\usepackage{siunitx}  
+\sisetup{locale = DE,separate-uncertainty}  
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{xmpl.bib}
+
+
+%% used for pgfplots, tikzpicture
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\fwidth
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Kapitel-Layout
+\usepackage{lmodern} 
+\usepackage{xcolor}
+\colorlet{chapter}{black!75}
+\addtokomafont{chapter}{\color{chapter}}
+\makeatletter% siehe De-TeX-FAQ
+\renewcommand*{\chapterformat}{%
+  \begingroup% damit \unitlength-Änderung lokal bleibt 
+  \setlength{\unitlength}{1mm}% 
+  \begin{picture}(20,20)(0,5)% 
+  \setlength{\fboxsep}{0pt}% 
+  \put(20,20){\line(1,0){\dimexpr 
+  \textwidth-20\unitlength\relax\@gobble}}% 
+  \put(0,0){\makebox(15,20)[r]{% 
+  \fontsize{18\unitlength}{28\unitlength}\selectfont\thechapter 
+  \kern-.04em% Ziffer in der Zeichenzelle nach rechts schieben 
+  }}% 
+  \end{picture} % <-- Leerzeichen ist hier beabsichtigt! 
+  \newline
+  \endgroup
+}
+
+\setlength\parindent{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Kopf- und Fußzeilen, Seitenränder etc.
+\input{Seitenstil}
+\newcommand{\mt}[1]{\textrm{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+ \begin{titlepage}
+
+	\begin{tabular}{l r} 
+ 
+      \includegraphics[width=0.4\textwidth]{Bilder/oth-regensburg-logo}
+      &
+		
+   \end{tabular}
+
+
+   \begin{minipage} [c] [8.5cm] [b] {\textwidth}
+      \Huge{
+         \begin{center}
+            \textbf{Praktikum Regelungstechnik (RTP)}\\[0.8cm]
+             \par
+              {\large Versuch 100:}\\[1cm]
+              {\large Parameterbestimmung der Pumpzelle einer Lambdasonde\\ zur Vorbereitung der Reglerauslegung} \\[1cm]
+          \end{center}
+           }
+      
+   \end{minipage}
+
+ \vspace{0.1cm}
+ 
+   \begin{figure}[H]
+	   \centering
+		  \includegraphics[width=0.5\textwidth]{Bilder/Oxygen_Sensor}
+   \end{figure}
+
+
+	
+   \begin{minipage} [c] [3.5cm] [b] {\textwidth}
+    \begin{center}
+       Ausarbeitung als Beispiel\\
+       \textcolor{green} {OBACHT! Bitte in Adobe\texttrademark Acrobat öffnen um Tipps zu sehen!}\\
+       \url{https://acrobat.adobe.com/de/de/acrobat/pdf-reader.html}\\
+       \vspace{0.3cm}
+       Gruppe 00\\
+       Torsten Reitmeier\\
+       Klaus Falkner\\
+       \vspace{0.5cm}
+       \texttt{Dokument-Version: 02}\\
+	\end{center}
+  
+   \end{minipage}
+
+
+\end{titlepage}
+
+
+\tableofcontents
+
+\defineavatar{Newton}{color=lime,subject={Tip},icon=Check,author={T. Reitmeier}}
+\pdfcommentsetup{avatar=Newton}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Beschreibung des Versuchs}
+\label{Grundlagen}
+Mit Hilfe einer Sprungantwort der Zelle einer Lambdasonde \cite{TRMT} \pdfcomment{Verweis auf Quelle} soll deren Charakteristik bestimmt werden. Dazu dient der vorhandene Versuchsaufbau (siehe Abbildung \ref{gAufbau}), der die Sonde bereits auf die notwendige Temperatur von \SI{700}{\celsius} heizt.\\
+Die digital einstellbare Stromquelle ($I_\mt{p}$) ist für den Versuchsteil a) so zu steuern, dass die vom AD-Wandler gemessene (und an den PC übertragene) Spannung $V_\mt{s}$ im Bereich $\SI{300}{mV} \pm \SI{50}{mV}$ \pdfcomment{1/2 Leerzeichen zw. Zahl und Einheit - SI-package} liegt.\\ 
+Anschließend ist ein Sprung von $\SI{1}{\%}$ des unter a) benötigten Stroms additiv aufzuschalten und die Antwort des Systems für \SI{3}{s} aufzuzeichnen. Mithilfe dieser Sprungantwort erfolgt die Bestimmung der Übertragungsfunktion $G(s)=\cfrac{V_\mt{s}}{I_\mt{p}}$.
+
+\begin{figure}[H]
+ \begin{center}
+ \includegraphics[width=1.0\textwidth]{./Bilder/LSU4.9}
+ \end{center}
+ \pdfcomment{BildUNTERschrift!, auf Abbildung ist im Text zu verweisen!}
+ \caption{Skizze des Versuchsaufbaus}
+ \label{gAufbau}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Ergebnisse}
+\label{erg}
+
+\section{Daten stationärer Zustand}
+\label{stat}
+Der benötigte Strom für eine Spannung $V_\mt{s}=\SI{337}{mV}$ beträgt $I_\mt{p}=\SI{2.315}{mA}$.\\ 
+Somit ist für die Höhe des Sprungs mit $\Delta I_\mt{p} \approx \SI{25}{uA}$ festzulegen.
+
+\section{Sprungantwort $\frac{x_\mt{a}(t)}{x_\mt{e}(t)}=\frac{V_\mt{s}(t)}{I_\mt{p}(t)}$}
+\label{ht}
+Die Abbildung \ref{ght} zeigt die aufgezeichnete Sprungantwort - laut ermittelter Werte des stationären Zustands - im kompletten Aufzeichnungsbereich, während Abbildung \ref{ghtzoom} einen Ausschnitt kurz nach Aufschalten des Sprungs darstellt. Diese Darstellung ist zur Unterscheidung von $PT_1$ und $PT_\mt{n}$ ($n \geq 2$) notwendig \cite{TRRT, RSSCRIPT}.\\
+\newline
+Für $\mt{PT}_1$ gilt
+
+\begin{equation}
+ \frac{dV_\mt{s}(t=t_\mt{Sprung})}{dt} \neq 0 .
+\end{equation}
+
+Für $\mt{PT}_\mt{n}$ mit $n \geq 2$ gilt
+\begin{equation}
+ \frac{dV_\mt{s}(t=t_\mt{Sprung})}{dt} = 0 .
+\end{equation}
+
+\newpage
+
+\begin{figure}[H]
+ \begin{center}
+ \hspace*{-0.2cm}
+ \includegraphics[width=0.95\textwidth]{./Bilder/h_t}
+ \end{center}
+ \vspace{-0.5cm}
+ \caption{Sprungantwort  $I_\mt{p0}=\SI{2.315}{mA}$ $\longmapsto$ $I_\mt{p1}=\SI{2.778}{mA}$}
+ \label{ght}
+\end{figure}
+
+
+\begin{figure}[H]
+ \begin{center}
+ \includegraphics[width=0.95\textwidth]{./Bilder/h_t_zoom}
+ \pdfcomment{Achsenbeschriftungen als zugeschnittene Größengleichungen, KEINESFALLS [] verwenden!}
+ \end{center}
+ \vspace{-0.5cm}
+ \caption{Sprungantwort  $I_\mt{p0}=\SI{2.315}{mA}$ $\longmapsto$ $I_\mt{p1}=\SI{2.778}{mA}$ - Zoom}
+ \label{ghtzoom}
+\end{figure}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Auswertung}
+\label{asw}
+
+\section{Wahl des Modellansatzes}
+\label{ModAnsatz}
+Abbildung \ref{ghtzoom} zeigt $\cfrac{dV_\mt{s}}{dt} \rightarrow$ 0 zum Zeitpunkt des Sprungs. Es handelt sich somit um kein $PT_1$-Verhalten.\\
+Mit Hilfe des Matlab\cite{MATLAB}-Tools \texttt{System Identification} wird nun versucht ein $PT_2$-System an die Messdaten anzupassen. 
+
+\section{$\mt{PT}_2$-Modell}
+\label{PT2}
+Das Ergebnis der Anpassung zeigt die folgende Abbildung:\\
+\vspace{-1cm}
+\begin{figure}[H]
+ \begin{center}
+  \setlength\fwidth{0.85\textwidth}
+  \input{Bilder/MessPT2}
+  \pdfcomment{Kommando in Matlab: matlab2tikz('MessPT2.tex','width', '\fwidth' );}
+  \pdfcomment{Reduzieren der Punkte auf z.B. 200: cleanfigure('targetResolution',200);}
+ \end{center}
+ \vspace{-1.0cm}
+ \caption{Anpassung PT\textsubscript{2}-Glied}
+ \label{gPT2}
+\end{figure}
+
+Es ist zu erkennen, dass der $\mt{PT}_2$-Ansatz mit den real gemessenen Daten gut korreliert.
+
+Die Übertragungsfunktion sowie deren Parameter lauten
+
+\begin{equation}
+  G(s) = \frac{V_\mt{s}(s)}{I_\mt{p}(s)} = \frac{K_\mt{P}}{(1+s \cdot T_1) \cdot (1+s \cdot T_2)} .
+\end{equation}
+
+\begin{center}
+ \captionof{table}{Parameter - Werte} \pdfcomment{Tabellen haben ÜBERschriften}
+ \begin{tabular}{|p{2cm}|p{3cm}|}
+ \hline
+ Parameter & Wert   \\ \hline\hline
+ $K_\mt{p}$ & $\SI{3201}{\cfrac{mV}{mA}}$    \\ \hline
+ $T_1$ & \SI{0.7}{s}  \\ \hline
+ $T_2$ & \SI{25}{ms}  \\ \hline
+ \end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+Im Folgenden wird die Güte der Anpassung genauer untersucht.\\
+\vspace{1cm}
+
+\section{Überprüfung der Abweichung des Modells von den gemessenen Daten}
+\label{check}
+Um die Abweichung deutlich erkennen zu können, wurde die Differenz zwischen realen Daten und Modelldaten gebildet. Sie ist in folgender Abbildung dargestellt:\\
+
+\begin{figure}[H]
+ \begin{center}
+ \includegraphics[width=0.9\textwidth]{./Bilder/Diff_Mess_PT2}
+ \end{center}
+ \vspace{-0.5cm}
+ \caption{Differenz Messwerte zu Werten aus PT2-Modell}
+ \label{gPT2Diff}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Fazit/Vorbereitung PI-Regler}
+
+\section{Fazit}
+\label{faz}
+Laut Graphik \ref{gPT2Diff} liegt die Abweichung von Modell- zu realen Daten im Bereich $\pm 2mV$. Dies ist für die Modellbildung hinreichend genau. Es kann auf Basis dieses Modells im nächsten Versuch die Auslegung des PI-Reglers erfolgen. Ein I-Anteil im Regler ist zwingend erforderlich, damit der geschlossene Kreis bei einem $PT_2$-Streckenverhalten keine bleibende Regelabweichung besitzt \cite{TRRT}.\\
+
+
+\section{Simulink-Modell mit PI-Regler}
+In Vorbereitung auf den nächsten Versuch ist unten das Simulink-Modell mit Strecke und PI-Regler dargestellt.
+
+\begin{figure}[H]
+ \begin{center}
+ \includegraphics[width=1.0\textwidth]{./Bilder/Simulink}
+ \pdfcomment{Screenshot in ausreichender Auflösung, Übertragungsfunktionen müssen lesbar sein - Boxgröße anpassen!}
+ \end{center}
+ \vspace{-0.5cm}
+ \caption{Simulink-Ansatz $PT_2$-Strecke mit PI-Regler}
+ \label{gSimMod}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%Addional hints
+\chapter{Hinweise zu Grafiken}
+
+Das Einbinden der Grafiken als \texttt{*.png} erfordert eine entsprechend hohe Auflösung um die berühmte \glqq verpixelte Grafik\grqq{} zu vermeiden. Dies wird leider häufig nicht beachtet, so dass Skalen, Beschriftungen, usw. unleserlich erscheinen.\\
+\newline
+Im Folgenden werden daher zwei Möglichkeiten zur Einbindung von Grafiken kurz beschrieben:
+
+\begin{itemize}
+
+\item Graphik als \texttt{*.eps} - Standard-Methode:\\
+Matlab bietet die Möglichkeit die erzeugte Grafik als \textbf{e}ncapsulated \textbf{p}ost\textbf{s}cript zu speichern. Dies ist ein Vektorformat und kann verlustfrei in beliebigen Größen dargestellt werden.\\
+
+\fbox{\begin{tabular}{@{}c@{}}
+  \textbf{Obacht!} - Hintergrund des Diagramms: weiß, Beschriftung: schwarz!\\
+  Kennlinien in deutlich sichtbaren, sich unterscheidenden Farben darstellen\\ 
+  (z.B. gelb vermeiden)!
+  \end{tabular}}
+
+\vspace*{0.5cm}
+Beispiele: Abbildungen \ref{ght}, \ref{ghtzoom}, \ref{gPT2Diff}
+\vspace*{0.5cm}
+
+\item Graphik mithilfe von \texttt{tikz} in LaTeX einbinden - für Technik-Freaks:\\
+Per Skript wird aus dem Matlab/Octave-Graphen eine \texttt{*.tex}-Datei erzeugt, die den Graphen als \texttt{tikzpicture} darstellt. Dies hat den Vorteil, dass Attribute wie Schriftarten, Textgröße, ... des Dokuments verwendet werden. Ebenso sind Hintergrund, Farbgebung, ... automatisch definiert!\\
+Quelle und Anleitung: \url{https://github.com/matlab2tikz/matlab2tikz}\\
+\newline
+Beachten Sie die Hinweise beim Graphen!
+
+\vspace*{0.5cm}
+Beispiel: Abbildung \ref{gPT2}
+\vspace*{0.5cm}
+
+\item Bei Verwendung von Word\textsuperscript{\texttrademark{}}  \texttt{*.svg} - Dateien verwenden!
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%Literaturverzeichnis
+\printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
