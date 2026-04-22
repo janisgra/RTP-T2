@@ -1,0 +1,13 @@
+% placeholder for DT1-Glied
+
+
+\tikz \datavisualization
+    [scientific axes={clean, standard labels},
+    visualize as smooth line,
+    x axis={label=$t$, ticks=none},
+    y axis={label=$h(t)$, ticks=none}]
+    data [format=function] {
+    var x : interval [0:10] samples 50;
+    func y = exp(-\value x);
+};
+

@@ -1,0 +1,13 @@
+% placeholder for P-Glied
+
+
+\tikz \datavisualization
+    [scientific axes={clean, standard labels},
+    visualize as smooth line,
+    x axis={label=$t$, ticks=none},
+    y axis={label=$h(t)$, ticks=none}]
+    data [format=function] {
+    var x : interval [-1:5] samples 100;
+    func y = (\value x > 0) ? 2 : 0;
+};
+

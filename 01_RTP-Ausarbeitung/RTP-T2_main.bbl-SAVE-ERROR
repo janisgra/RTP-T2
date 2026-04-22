@@ -1,0 +1,77 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{RSSCRIPT}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=7f78a4a0935e98a8ea648653702c6395}{%
+           family={Ralph},
+           familyi={R\bibinitperiod},
+           given={Schneider},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OTH Regensburg}%
+      }
+      \strng{namehash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{fullhash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{fullhashraw}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{bibnamehash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{authorbibnamehash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{authornamehash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{authorfullhash}{7f78a4a0935e98a8ea648653702c6395}
+      \strng{authorfullhashraw}{7f78a4a0935e98a8ea648653702c6395}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vorlesungsskript RT}
+      \field{year}{2020}
+    \endentry
+    \entry{TRRT}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2258f5d58ac3361361d8d6bfd7f5fad}{%
+           family={Torsten},
+           familyi={T\bibinitperiod},
+           given={Reitmeier},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OTH Regensburg}%
+      }
+      \strng{namehash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{fullhash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{fullhashraw}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{bibnamehash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{authorbibnamehash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{authornamehash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{authorfullhash}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \strng{authorfullhashraw}{e2258f5d58ac3361361d8d6bfd7f5fad}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vorlesungsskript MRT - RT}
+      \field{year}{2022}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
