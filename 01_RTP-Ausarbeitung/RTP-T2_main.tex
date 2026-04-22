@@ -32,6 +32,8 @@
 
 \usepackage{todonotes}
 
+\usepackage{listings}
+
 \pgfplotsset{plot coordinates/math parser=false}
 \newlength\fwidth
 
@@ -84,7 +86,7 @@
 \setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
 
 % Fußzeile -----------------------------------------------------------------
-\ifoot{Torsten Reitmeier/Klaus Falkner}
+\ifoot{Name 1 Name 2}
 \cfoot{\today}
 \ofoot{\pagemark}
 
@@ -122,9 +124,10 @@
     \begin{minipage} [c] [8.5cm] [b] {\textwidth}
         \Huge{
             \begin{center}
-                \textbf{Praktikum Regelungstechnik (RTP)\cite{TRRT, RSSCRIPT}}\\[0.8cm]
+                \textbf{Praktikum Regelungstechnik (RTP)}\\[0.8cm]
+                \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
                 \par
-                {\large Versuch 100:}\\[1cm]
+                {\large Versuch 1}\\[1cm]
                 {\large empty} \\[1cm]
             \end{center}
             }
@@ -322,23 +325,28 @@
         
         \chapter{Appendix A}
 
-        \section{List of Figures}
+            \section{List of Figures}
 
-        \listoffigures
+            \listoffigures
 
-        \section{List of Tables}
+            \section{List of Tables}
 
-        \listoftables
+            \listoftables
 
-        \section{List of Equations}
+            \section{List of Variables and Constants used in this report}
 
-        \section{List of Variables and Constants used in this report}
+        \chapter{Appendix Code and Resources}
 
-        
+            \section{Code used for the analysis of the Preperations}
+
+            %\lstinputlisting[language=Python, caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
+
+            \section{Code used for the analysis of the Experiment}
+
 
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        \chapter{Bibliography}
         %%%Literaturverzeichnis
         \printbibliography
 
