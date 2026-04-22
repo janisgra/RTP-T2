@@ -157,30 +157,184 @@
     
     Zur Vorbereitung auf diesen Versuch wurden die in ELO bereitgestellten Dateien heruntergeladen und gespeichert \cite{RTP_Versuche}. Zudem wurden die jeweiligen Sprungantworten verschiedener Systemverhalten recherchiert: \\
 
-        \begin{tabular}{m{4.5cm} m{6.5cm} >{\centering\arraybackslash}m{3.5cm}}
-            \textbf{Systemverhalten}                           & \textbf{Sprungantwort}                                                                                                                    & \textbf{Visualization}                                      \\
-            \hline
-            {P-Glied ($K_p$)}                                  & $G(s) = K_p \refstepcounter{equation}(\theequation)\label{eq:P}$                                                                          & \resizebox{2cm}{2cm}{\input{figure/preperations/P-Glied}} \\[4pt]
-            {PT$_1$-Glied ($K_p$, $T_1$)}                      & $G(s) = \dfrac{K_p}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT1}$                                                     & \resizebox{2cm}{2cm}{\input{figure/preperations/PT1-Glied}} \\[4pt]
-            {PT$_2$-Glied ($K_p$, $\omega_0$, $D$)}            & $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT2_w0_D}$ & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied}} \\[4pt]
-            {PT$_2$-Glied für $D \ge 1$ ($K_p$, $T_1$, $T_2$)} & $G(s) = \dfrac{K_p}{(T_1 s + 1)(T_2 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:PT2_T1_T2}$                                  & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied-D1}} \\[4pt]
-            {I-Glied ($K_I$)}                                  & $G(s) = \dfrac{K_I}{s} \refstepcounter{equation}(\theequation)\label{eq:I}$                                                               & \resizebox{2cm}{2cm}{\input{figure/preperations/I-Glied}} \\[4pt]
-            {IT$_1$-Glied ($K_I$, $T_1$)}                      & $G(s) = \dfrac{K_I}{s (T_1 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:IT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/IT1-Glied}} \\[4pt]
-            {D-Glied ($K_D$)}                                  & $G(s) = K_D\, s \refstepcounter{equation}(\theequation)\label{eq:D}$                                                                      & \resizebox{2cm}{2cm}{\input{figure/preperations/D-Glied}} \\[4pt]
-            {DT$_1$-Glied ($K_D$, $T_1$)}                      & $G(s) = \dfrac{K_D\, s}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:DT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/DT1-Glied}} \\[4pt]
-            {T$_t$-Glied ($K_p$, $T_t$)}                       & $G(s) = K_p\, e^{-T_t s} \refstepcounter{equation}(\theequation)\label{eq:Tt}$                                                            & \resizebox{2cm}{2cm}{\input{figure/preperations/Tt-Glied}} \\
-        \end{tabular}
+        \section{Different basic system behaviors}
+            \begin{tabular}{m{4.5cm} m{6.5cm} >{\centering\arraybackslash}m{3.5cm}}
+                \textbf{Systemverhalten}                           & \textbf{Sprungantwort}                                                                                                                    & \textbf{Visualization}                                      \\
+                \hline
+                {P-Glied ($K_p$)}                                  & $G(s) = K_p \refstepcounter{equation}(\theequation)\label{eq:P}$                                                                          & \resizebox{2cm}{2cm}{\input{figure/preperations/P-Glied}} \\[4pt]
+                {PT$_1$-Glied ($K_p$, $T_1$)}                      & $G(s) = \dfrac{K_p}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT1}$                                                     & \resizebox{2cm}{2cm}{\input{figure/preperations/PT1-Glied}} \\[4pt]
+                {PT$_2$-Glied ($K_p$, $\omega_0$, $D$)}            & $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT2_w0_D}$ & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied}} \\[4pt]
+                {PT$_2$-Glied für $D \ge 1$ ($K_p$, $T_1$, $T_2$)} & $G(s) = \dfrac{K_p}{(T_1 s + 1)(T_2 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:PT2_T1_T2}$                                  & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied-D1}} \\[4pt]
+                {I-Glied ($K_I$)}                                  & $G(s) = \dfrac{K_I}{s} \refstepcounter{equation}(\theequation)\label{eq:I}$                                                               & \resizebox{2cm}{2cm}{\input{figure/preperations/I-Glied}} \\[4pt]
+                {IT$_1$-Glied ($K_I$, $T_1$)}                      & $G(s) = \dfrac{K_I}{s (T_1 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:IT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/IT1-Glied}} \\[4pt]
+                {D-Glied ($K_D$)}                                  & $G(s) = K_D\, s \refstepcounter{equation}(\theequation)\label{eq:D}$                                                                      & \resizebox{2cm}{2cm}{\input{figure/preperations/D-Glied}} \\[4pt]
+                {DT$_1$-Glied ($K_D$, $T_1$)}                      & $G(s) = \dfrac{K_D\, s}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:DT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/DT1-Glied}} \\[4pt]
+                {T$_t$-Glied ($K_p$, $T_t$)}                       & $G(s) = K_p\, e^{-T_t s} \refstepcounter{equation}(\theequation)\label{eq:Tt}$                                                            & \resizebox{2cm}{2cm}{\input{figure/preperations/Tt-Glied}} \\
+            \end{tabular}
+        
+            \cleardoublepage
+
+            \subsection{P-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{PT$_1$-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{PT$_2$-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{I-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{IT$_1$-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{D-Glied}
+                
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+                
+            \subsection{DT$_1$-Glied}
+
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+            \subsection{T$_t$-Glied}
+                
+                \subsubsection{Explanation}
+
+                \subsubsection{Parameters needed for characterization}
+
+                \subsubsection{Step and Impulse response}
+
+            \cleardoublepage
+
+        \section{Identified example systems}
+
+            \subsection{System $N=0$}
+
+                \subsubsection{Step and Impulse response}
+
+                \subsubsection{Differnetal Equiation}
+
+                \subsubsection{Transfer Function}
+            
+            \cleardoublepage
+
+            \subsection{System $N=1$}
+
+                \subsubsection{Step and Impulse response}
+
+                \subsubsection{Differnetal Equiation}
+                
+                \subsubsection{Transfer Function}
+            
+            \cleardoublepage
+
+            \subsection{System $N=1$}
+
+                \subsubsection{Step and Impulse response}
+
+                \subsubsection{Differnetal Equiation}
+                
+                \subsubsection{Transfer Function}
+
+            \cleardoublepage
+
+        
+
 
     \chapter{Experiment T2 --- System identification}
 
+        \section{System $N=0$}
+            
+            \subsection{Experimentaly Identified system parameters}
 
-    \chapter{Conclusion}
+            \subsection{Documentation of the results}
+
+                \subsubsection{Essential Commands}
+
+                \subsubsection{Differential Equation}
+
+                \subsubsection{Transfer Function}
+
+            \subsection{Realworld Example}
+
+                description of the respective input and output variables.
+
+            \subsection{Comparison of given System with the response of the identified system}
+
+
+                \subsubsection{Deviations of the System}
+
+        \cleardoublepage
+
+
 
 
     \appendix
         \makeatletter
         
         \chapter{Appendix A}
+
+        \section{List of Figures}
+
+        \listoffigures
+
+        \section{List of Tables}
+
+        \listoftables
+
+        \section{List of Equations}
+
+        \section{List of Variables and Constants used in this report}
+
+        
 
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
