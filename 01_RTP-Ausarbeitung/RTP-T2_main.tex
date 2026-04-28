@@ -82,7 +82,11 @@
                 \todo[inline]{Check explanation of the P-Glied again, look into script}
 
                     Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_p$.
-                    The equation for a P-Glied is given by $x_a(t) = K_p x_e(t)$, where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$.
+                    The equation for a P-Glied is given by 
+                    \begin{equation}
+                        x_a(t) = K_p x_e(t)
+                    \end{equation}
+                    where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$ \ref{eq:P}.
 
                     \missingfigure{Missing figure for the P-Glied}
                 \subsubsection{Parameters needed for characterization}
@@ -97,7 +101,11 @@
 
                 \subsubsection{Explanation}
                 \todo[inline]{Check explanation of the PT1-Glied again, look into script}
-                    The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by $T_1 \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{T_1 s + 1}$, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
+                    The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by 
+                    \begin{equation}
+                    T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
+                    \end{equation}
+                    or equation \ref{eq:PT1}, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
                 
                     \missingfigure{Missing figure for the PT$_1$-Glied}
 
@@ -119,7 +127,7 @@
                     \begin{equation}
                         \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
                     \end{equation}
-                    or $$G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1}$$, where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
+                    or equation \ref{eq:PT2_w0_D} , where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
 
                     \missingfigure{Missing figure for the PT$_2$-Glied}
 
@@ -127,14 +135,57 @@
                     For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_p$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_p$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
 
                     For an underdamped system ($D < 1$), the step response will exhibit oscillations before settling to the steady state value. The natural frequency $\omega_0$ determines the frequency of these oscillations, while the damping ratio $D$ determines how quickly the oscillations decay. 
-                    For a critically damped system ($D = 1$), the step response will reach the steady state value without oscillating, and it will do so as quickly as possible without overshooting. It is often reached by putting two PT$_1$-Glied in series, which results in the transfer function given by $T_1T_2 \ddot{x}_a + (T_1 + T_2) \dot{x}_a + x_a(t) = K_p x_e(t)$, or $h(t) = K_P \left(1 - (1 + \omega_0 t)e^{-\omega_0 t}\right)$.
-                    For an overdamped system ($D > 1$), the step response will reach the steady state value without oscillating, but it will take longer to do so than a critically damped system. The Transfer function can be rewritten as $h(t) = K_p \left(1 + \frac{1}{\lambda_1 - \lambda_2}(\lambda_2e^{-\lambda_1t} - \lambda_1e^{-\lambda_2t})\right)$, 
-                    where $\lambda_1$ and $\lambda_2$ are the eigenvalues of the characteristic equation of the system, given by $\lambda_{1,2} = -D\omega_0 \pm \omega_0\sqrt{D^2 - 1}$. The time constants of the system can be determined from these roots, and they indicate how quickly the system responds to changes in the input.
+                    For a critically damped system ($D = 1$), the step response will reach the steady state value without oscillating, and it will do so as quickly as possible without overshooting. It is often reached by putting two PT$_1$-Glied in series, which results in the transfer function given by 
+                    \begin{equation}
+                        T_1T_2 \ddot{x}_a + (T_1 + T_2) \dot{x}_a + x_a(t) = K_p x_e(t)
+                    \end{equation}
+                    or 
+                    \begin{equation}
+                        h(t) = K_P \left(1 - (1 + \omega_0 t)e^{-\omega_0 t}\right)
+                    \end{equation}
+                    For an overdamped system ($D > 1$), the step response will reach the steady state value without oscillating, but it will take longer to do so than a critically damped system. The Transfer function can be rewritten as 
+                    \begin{equation}
+                        h(t) = K_p \left(1 + \frac{1}{\lambda_1 - \lambda_2}(\lambda_2e^{-\lambda_1t} - \lambda_1e^{-\lambda_2t})\right)
+                    \end{equation} 
+                    where $\lambda_1$ and $\lambda_2$ are the eigenvalues of the characteristic equation of the system, given by 
+                    \begin{equation}
+                        \lambda_{1,2} = -D\omega_0 \pm \omega_0\sqrt{D^2 - 1}
+                    \end{equation}    
+                    The time constants of the system can be determined from these roots, and they indicate how quickly the system responds to changes in the input.
                     For an undamped system ($D = 0$), the step response will exhibit sustained oscillations at the natural frequency $\omega_0$.
 
-                    For the case $0 < D < 1$, the transfer function can be rewritten as $h(t) = K_p \left(1 - \frac{e^{-\omega_0 D t}}{\sqrt{1 - D^2}} \sin(\omega_d t + \phi)\right)$. The Periodic time of the oscillations can be determined from the damped natural frequency $T_d = \frac{2\pi}{\omega_d} = \frac{2\pi}{\omega_0 \sqrt{1 - D^2}}$. The Transferfunction can be caracterized by the upper and lower envelope of the oscillations, which are given by $h^\pm(t) = K_p (1 \pm \frac{e^-D\omega_0 t}{\sqrt{1-D^2}})$. The over swing time $t_{max}$, which is the time at which the first maximum of the step response occurs, can be determined from the equation $t_{max} = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_0 \sqrt{1 - D^2}}$. The overshoot $h_{max}$, can be determined from the equation $h_{max} = h(t_{max}) = K_p \left(1 + e^{-\pi D/\sqrt{1-D^2}}\right)$.
-                    The normalized overshoot value $\ddot{u}$ can be determined from the equation $\ddot{u} = \frac{h_{max} - h(\infty)}{h(\infty)} = e^{\frac{-\pi D}{\sqrt{1-D^2}}}$, which can be used to determine the damping ratio $D$ from the overshoot of the step response. Given by the equation $D = \frac{\left| \ln(\ddot{u}) \right|}{\sqrt{\pi^2 + \ln^2(\ddot{u})}}$.
-                    new line
+                    For the case $0 < D < 1$, the transfer function can be rewritten as 
+                    \begin{equation}
+                        h(t) = K_p \left(1 - \frac{e^{-\omega_0 D t}}{\sqrt{1 - D^2}} \sin(\omega_d t + \phi)\right)
+                    \end{equation}
+
+                    The Periodic time of the oscillations can be determined from the damped natural frequency 
+                    \begin{equation}
+                        T_d = \frac{2\pi}{\omega_d} = \frac{2\pi}{\omega_0 \sqrt{1 - D^2}}
+                    \end{equation}
+                    The Transferfunction can be caracterized by the upper and lower envelope of the oscillations, which are given by 
+                    \begin{equation}
+                        h^\pm(t) = K_p (1 \pm \frac{e^-D\omega_0 t}{\sqrt{1-D^2}})
+                    \end{equation}
+                    
+                    The over swing time $t_{max}$, which is the time at which the first maximum of the step response occurs, can be determined from the equation 
+
+                    \begin{equation}
+                        t_{max} = \frac{\pi}{\omega_d} = \frac{\pi}{\omega_0 \sqrt{1 - D^2}}
+                    \end{equation}
+
+                    The overshoot $h_{max}$, can be determined from the equation 
+                    \begin{equation}
+                        h_{max} = h(t_{max}) = K_p \left(1 + e^{-\pi D/\sqrt{1-D^2}}\right)
+                    \end{equation}
+                    The normalized overshoot value $\ddot{u}$ can be determined from the equation
+                    \begin{equation}
+                        \ddot{u} = \frac{h_{max} - h(\infty)}{h(\infty)} = e^{\frac{-\pi D}{\sqrt{1-D^2}}}
+                    \end{equation}
+                    which can be used to determine the damping ratio $D$ from the overshoot of the step response. Given by the equation 
+                    \begin{equation}
+                        D = \frac{\left| \ln(\ddot{u}) \right|}{\sqrt{\pi^2 + \ln^2(\ddot{u})}}
+                    \end{equation}
 
 
                 \subsubsection{Step and Impulse response}
