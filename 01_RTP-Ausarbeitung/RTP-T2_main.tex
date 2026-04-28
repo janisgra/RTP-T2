@@ -79,6 +79,8 @@
             \subsection{P-Glied}
 
                 \subsubsection{Explanation}
+                \todo[inline]{Check explanation of the P-Glied again, look into script}
+
                     Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_p$.
                     The equation for a P-Glied is given by $x_a(t) = K_p x_e(t)$, where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$.
 
@@ -94,6 +96,7 @@
             \subsection{PT$_1$-Glied}
 
                 \subsubsection{Explanation}
+                \todo[inline]{Check explanation of the PT1-Glied again, look into script}
                     The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by $T_1 \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{T_1 s + 1}$, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
                 
                     \missingfigure{Missing figure for the PT$_1$-Glied}
@@ -110,7 +113,13 @@
             \subsection{PT$_2$-Glied}
 
                 \subsubsection{Explanation}
-                A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appares delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by $\frac{1}{omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1}$, where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
+                \todo[inline]{Check explanation of the PT2-Glied again, look into script}
+                    
+                    A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appares delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
+                    \begin{equation}
+                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
+                    \end{equation}
+                    or $$G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1}$$, where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
 
                     \missingfigure{Missing figure for the PT$_2$-Glied}
 
@@ -198,21 +207,21 @@
                 \caption[]{}
             \end{figure}
 
-            \todo{add parameters}
+            \todo[inline]{add parameters}
 
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
 
-                \todo{add essential commands for PT1 identification}
+                \todo[inline]{add essential commands for PT1 identification}
 
                 \subsubsection{Differential Equation}
 
-                \todo{add differential equation for PT1 system}
+                \todo[inline]{add differential equation for PT1 system}
 
                 \subsubsection{Transfer Function}
 
-                \todo{add transfer function for PT1 system}
+                \todo[inline]{add transfer function for PT1 system}
 
             \subsection{Realworld Example}
 
@@ -220,7 +229,7 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            \todo{add short text about differences of the ideal system to the messured PT1 system}
+            \todo[inline]{add short text about differences of the ideal system to the messured PT1 system}
 
         
             \begin{figure}[ht]
@@ -238,6 +247,7 @@
             
             \subsection{Experimentaly Identified system parameters}
             
+            \todo[inline]{add parameters}
             
             \begin{figure}[ht]
                 \centering
@@ -248,17 +258,25 @@
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
+                
+                \todo[inline]{add essential commands for PT2 identification}
 
                 \subsubsection{Differential Equation}
 
+                \todo[inline]{add differential equation for PT2 system}
+
                 \subsubsection{Transfer Function}
+
+                \todo[inline]{add transfer function for PT2 system}
 
             \subsection{Realworld Example}
 
+                \todo[inline]{add realworld example for PT2 system, look into script}
                 description of the respective input and output variables.
 
             \subsection{Comparison of given System with the response of the identified system}
             
+                \todo[inline]{add short text about differences of the ideal system to the messured PT2 system}
 
                 \begin{figure}[ht]
                     \centering
@@ -281,14 +299,22 @@
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_identification.pdf}
                 \caption[]{}
             \end{figure}
+            
+            \todo[inline]{add parameters}
 
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
 
+                \todo[inline]{add essential commands for IT1 identification}
+
                 \subsubsection{Differential Equation}
 
+                \todo[inline]{add differential equation for IT1 system}
+
                 \subsubsection{Transfer Function}
+
+                \todo[inline]{add transfer function for IT1 system}
 
             \subsection{Realworld Example}
 
@@ -299,6 +325,7 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
+            \todo[inline]{add short text about differences of the ideal system to the messured IT1 system}
             
             \begin{figure}[ht]
                 \centering
@@ -315,8 +342,15 @@
 
     \appendix
         \makeatletter
+
         
-        \chapter{Appendix A}
+        \chapter{Appendix Frontmatter}
+            
+            \section{Declerations}
+
+                \todo[inline]{add declerations}
+
+                \cleardoublepage
 
             \section{List of Figures}
 
@@ -330,11 +364,11 @@
 
         \chapter{Appendix Code and Resources}
 
-            \section{Code used for the analysis of the Preperations}
+            \section{Code used for the analysis of the Preperations and the Experiment}
+
+            \todo[inline]{add code for the analysis of the preperations, look into jupyter notebook}
 
             %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
-
-            \section{Code used for the analysis of the Experiment}
 
 
 
