@@ -112,7 +112,7 @@
                 \subsubsection{Explanation}
                 A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appares delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by $\frac{1}{omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1}$, where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
 
-                \missingfigure{Missing figure for the PT$_2$-Glied}
+                    \missingfigure{Missing figure for the PT$_2$-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_p$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_p$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
@@ -192,19 +192,42 @@
             
             \subsection{Experimentaly Identified system parameters}
 
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_pt1_identification.pdf}
+                \caption[]{}
+            \end{figure}
+
+            \todo{add parameters}
+
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
 
+                \todo{add essential commands for PT1 identification}
+
                 \subsubsection{Differential Equation}
 
+                \todo{add differential equation for PT1 system}
+
                 \subsubsection{Transfer Function}
+
+                \todo{add transfer function for PT1 system}
 
             \subsection{Realworld Example}
 
                 A practical example of such a PT1 system with impulsive excitation is the temperature response of a small metal body to a brief heat flux. If, for example, a metal rod is briefly excited by a heat source (e.g. hot air or a laser) --- comparable to a Dirac impulse --- the body heats up abruptly and then cools down again via heat conduction and dissipation to the surroundings. The thermal behaviour follows a PT1 model: the temperature rises briefly due to the pulse (corresponding to the step in the output signal) and then falls back to the original level exponentially with a characteristic time constant. The time constant depends on the material properties (heat capacity, thermal conductivity) and the environmental conditions (e.g. convection, radiation). Such system responses frequently occur in sensor technology, materials analysis or in the case of short control pulses in electronic or thermal systems.description of the respective input and output variables.
 
             \subsection{Comparison of given System with the response of the identified system}
+
+            \todo{add short text about differences of the ideal system to the messured PT1 system}
+
+        
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_polyfit_error.pdf}
+                \caption[]{}
+            \end{figure}
 
 
                 \subsubsection{Deviations of the System}
@@ -214,6 +237,13 @@
         \section{System 1}
             
             \subsection{Experimentaly Identified system parameters}
+            
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_pt2_identification.pdf}
+                \caption[]{}
+            \end{figure}
 
             \subsection{Documentation of the results}
 
@@ -228,6 +258,13 @@
                 description of the respective input and output variables.
 
             \subsection{Comparison of given System with the response of the identified system}
+            
+
+                \begin{figure}[ht]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_polyfit_error.pdf}
+                    \caption[]{}
+                \end{figure}
 
 
                 \subsubsection{Deviations of the System}
@@ -237,6 +274,13 @@
         \section{System 2}
             
             \subsection{Experimentaly Identified system parameters}
+
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_identification.pdf}
+                \caption[]{}
+            \end{figure}
 
             \subsection{Documentation of the results}
 
@@ -254,6 +298,13 @@
                 description of the respective input and output variables.
 
             \subsection{Comparison of given System with the response of the identified system}
+
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_polyfit_error.pdf}
+                \caption[]{}
+            \end{figure}
 
 
                 \subsubsection{Deviations of the System}
@@ -281,7 +332,7 @@
 
             \section{Code used for the analysis of the Preperations}
 
-            \lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
+            %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
 
             \section{Code used for the analysis of the Experiment}
 
