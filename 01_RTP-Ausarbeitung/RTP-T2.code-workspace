@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../#Janis/6-UNI/01-OTH/BE6/Unterlagen_Max/RTP/RTP2"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"[Default Dark Modern]": {
+				"tab.activeBorderTop": "#00FF00",
+				"tab.unfocusedActiveBorderTop": "#00FF0088",
+				"textCodeBlock.background": "#00000055"
+			},
+			"editor.wordHighlightStrongBorder": "#FF6347",
+			"editor.wordHighlightBorder": "#FFD700",
+			"editor.selectionHighlightBorder": "#A9A9A9",
+			"activityBar.background": "#9B4207",
+			"titleBar.activeBackground": "#D95D0A",
+			"titleBar.activeForeground": "#FFF8F4",
+			"titleBar.inactiveBackground": "#9B4207",
+			"titleBar.inactiveForeground": "#FFF8F4",
+			"statusBar.background": "#9B4207",
+			"statusBar.foreground": "#FFF8F4",
+			"statusBar.debuggingBackground": "#9B4207",
+			"statusBar.debuggingForeground": "#FFF8F4",
+			"statusBar.noFolderBackground": "#9B4207",
+			"statusBar.noFolderForeground": "#FFF8F4"
+		}
+	}
+}

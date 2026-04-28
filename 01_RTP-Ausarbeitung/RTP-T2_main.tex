@@ -128,7 +128,7 @@
                 \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
                 \par
                 {\large Versuch 1}\\[1cm]
-                {\large empty} \\[1cm]
+                %{\large empty} \\[1cm]
             \end{center}
             }
         
@@ -142,7 +142,7 @@
         Ausarbeitung als Beispiel\\
         \vspace{0.3cm}
         Gruppe 38\\
-        NAME 1\\
+        Marius Off\\
         Janis Graf\\
         \vspace{0.5cm}
         \texttt{Dokument-Version: 02}\\
@@ -161,6 +161,7 @@
     Zur Vorbereitung auf diesen Versuch wurden die in ELO bereitgestellten Dateien heruntergeladen und gespeichert \cite{RTP_Versuche}. Zudem wurden die jeweiligen Sprungantworten verschiedener Systemverhalten recherchiert: \\
 
         \section{Different basic system behaviors}
+        \todo{Check names of coloumns again}
             \begin{tabular}{m{4.5cm} m{6.5cm} >{\centering\arraybackslash}m{3.5cm}}
                 \textbf{Systemverhalten}                           & \textbf{Übertragungsfunktion}                                                                                                                    & \textbf{Visualization}                                      \\
                 \hline
@@ -183,6 +184,7 @@
                     Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_p$.
                     The equation for a P-Glied is given by $x_a(t) = K_p x_e(t)$, where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$.
 
+                    \missingfigure{Missing figure for the P-Glied}
                 \subsubsection{Parameters needed for characterization}
                     The only parameter needed to characterize a P-Glied is the proportional gain $K_p$. This parameter determines the steady-state gain of the system and how much the output will change in response to a change in the input.
 
@@ -195,6 +197,8 @@
 
                 \subsubsection{Explanation}
                     The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by $T_1 \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{T_1 s + 1}$, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
+                
+                    \missingfigure{Missing figure for the PT$_1$-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of a PT$_1$-Glied, the parameters needed are the proportional gain $K_p$ and the time constant $T_1$. The proportional gain $K_p$ determines the steady-state gain of the system, while the time constant $T_1$ determines how quickly the system responds to changes in the input.
@@ -209,6 +213,8 @@
 
                 \subsubsection{Explanation}
                 A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appares delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by $\frac{1}{omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)$, or $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1}$, where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
+
+                \missingfigure{Missing figure for the PT$_2$-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_p$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_p$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
@@ -227,54 +233,55 @@
                 \subsubsection{Step and Impulse response}
 
             \cleardoublepage
+            
+            \todo[inline]{explain two more system behaviors}
+            % \subsection{I-Glied}
 
-            \subsection{I-Glied}
+            %     \subsubsection{Explanation}
 
-                \subsubsection{Explanation}
+            %     \subsubsection{Parameters needed for characterization}
 
-                \subsubsection{Parameters needed for characterization}
+            %     \subsubsection{Step and Impulse response}
 
-                \subsubsection{Step and Impulse response}
+            % \cleardoublepage
 
-            \cleardoublepage
+            % \subsection{IT$_1$-Glied}
 
-            \subsection{IT$_1$-Glied}
+            %     \subsubsection{Explanation}
 
-                \subsubsection{Explanation}
+            %     \subsubsection{Parameters needed for characterization}
 
-                \subsubsection{Parameters needed for characterization}
+            %     \subsubsection{Step and Impulse response}
 
-                \subsubsection{Step and Impulse response}
+            % \cleardoublepage
 
-            \cleardoublepage
-
-            \subsection{D-Glied}
+            % \subsection{D-Glied}
                 
-                \subsubsection{Explanation}
+            %     \subsubsection{Explanation}
 
-                \subsubsection{Parameters needed for characterization}
+            %     \subsubsection{Parameters needed for characterization}
 
-                \subsubsection{Step and Impulse response}
+            %     \subsubsection{Step and Impulse response}
 
-            \cleardoublepage
+            % \cleardoublepage
                 
-            \subsection{DT$_1$-Glied}
+            % \subsection{DT$_1$-Glied}
 
-                \subsubsection{Explanation}
+            %     \subsubsection{Explanation}
 
-                \subsubsection{Parameters needed for characterization}
+            %     \subsubsection{Parameters needed for characterization}
 
-                \subsubsection{Step and Impulse response}
+            %     \subsubsection{Step and Impulse response}
 
-            \cleardoublepage
+            % \cleardoublepage
 
-            \subsection{T$_t$-Glied}
+            % \subsection{T$_t$-Glied}
                 
-                \subsubsection{Explanation}
+            %     \subsubsection{Explanation}
 
-                \subsubsection{Parameters needed for characterization}
+            %     \subsubsection{Parameters needed for characterization}
 
-                \subsubsection{Step and Impulse response}
+            %     \subsubsection{Step and Impulse response}
 
             \cleardoublepage
 
@@ -297,6 +304,29 @@
 
             \subsection{Realworld Example}
 
+                A practical example of such a PT1 system with impulsive excitation is the temperature response of a small metal body to a brief heat flux. If, for example, a metal rod is briefly excited by a heat source (e.g. hot air or a laser) --- comparable to a Dirac impulse --- the body heats up abruptly and then cools down again via heat conduction and dissipation to the surroundings. The thermal behaviour follows a PT1 model: the temperature rises briefly due to the pulse (corresponding to the step in the output signal) and then falls back to the original level exponentially with a characteristic time constant. The time constant depends on the material properties (heat capacity, thermal conductivity) and the environmental conditions (e.g. convection, radiation). Such system responses frequently occur in sensor technology, materials analysis or in the case of short control pulses in electronic or thermal systems.description of the respective input and output variables.
+
+            \subsection{Comparison of given System with the response of the identified system}
+
+
+                \subsubsection{Deviations of the System}
+
+        \cleardoublepage
+
+        \section{System $N=1$}
+            
+            \subsection{Experimentaly Identified system parameters}
+
+            \subsection{Documentation of the results}
+
+                \subsubsection{Essential Commands}
+
+                \subsubsection{Differential Equation}
+
+                \subsubsection{Transfer Function}
+
+            \subsection{Realworld Example}
+
                 description of the respective input and output variables.
 
             \subsection{Comparison of given System with the response of the identified system}
@@ -306,6 +336,31 @@
 
         \cleardoublepage
 
+        \section{System $N=2$}
+            
+            \subsection{Experimentaly Identified system parameters}
+
+            \subsection{Documentation of the results}
+
+                \subsubsection{Essential Commands}
+
+                \subsubsection{Differential Equation}
+
+                \subsubsection{Transfer Function}
+
+            \subsection{Realworld Example}
+
+                A clear example of an IT1 element with an upstream dead time is a water tank with a constant inflow and proportional outflow. The inflow corresponds to the input signal, and the water level to the output signal. The storage results in integrative behaviour, whilst the proportional outflow causes first-order damping --- typical of an IT1 system.
+                
+                In the experimental setup under consideration, a dead-time element was connected upstream of the IT1 element, causing a time delay in the input signal. This means that the system output only reacts to a change after the dead time has elapsed. Such combinations of dead time and IT1 behaviour frequently occur in real-world processes, for example in sluggish piping systems or delayed control variable transmissions.
+                description of the respective input and output variables.
+
+            \subsection{Comparison of given System with the response of the identified system}
+
+
+                \subsubsection{Deviations of the System}
+
+        \cleardoublepage
 
 
 
