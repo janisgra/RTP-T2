@@ -95,6 +95,8 @@
                 \subsubsection{Step and Impulse response}
                     The step response of a P-Glied is a step function that reaches a steady state value of $K_p$ times the input step magnitude. The impulse response is an impulse function scaled by $K_p$.
 
+                    \missingfigure{Missing figure for the P-Glied step and impulse response}
+
             \cleardoublepage
 
             \subsection{PT$_1$-Glied}
@@ -192,26 +194,47 @@
 
             \cleardoublepage
             
-            \todo[inline]{explain two more system behaviors}
-            % \subsection{I-Glied}
+            \subsection{I-Glied}
+                \subsubsection{Explanation}
 
-            %     \subsubsection{Explanation}
+                    Integral-Glied, are transfer functions that consist of an integrator of input signal, the output $x_a(t)$ is proportional to the integral of the input $x_e(t)$, with the proportionality constant being $K_I$. The transfer function of an I-Glied is given by $G(s) = \frac{K_I}{s}$ \ref{eq:I}. given by the equation
+                    \begin{equation}
+                        x_a(t) = K_I \int_0^t x_e(\tau) d\tau
+                    \end{equation}
+                    Equation \ref{eq:I} can also be rewritten as
+                    \begin{equation}                    
+                        h(t) = K_I \int_0^t \sigma(\tau) d\tau = K_I t
+                    \end{equation} 
 
-            %     \subsubsection{Parameters needed for characterization}
+                    \missingfigure{Missing figure for the I-Glied}
+                
 
-            %     \subsubsection{Step and Impulse response}
+                \subsubsection{Parameters needed for characterization}
+                    The only parameter needed to characterize an I-Glied is the integral gain $K_I$. This parameter determines how quickly the output will change in response to a change in the input. The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
 
-            % \cleardoublepage
+                \subsubsection{Step and Impulse response}
+                    The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
 
-            % \subsection{IT$_1$-Glied}
+            \cleardoublepage
 
-            %     \subsubsection{Explanation}
+            \subsection{IT$_1$-Glied}
+                \subsubsection{Explanation}
+                    The IT$_1$-Glied is a system that consists of an integrator and a first-order part. The transfer function of an IT$_1$-Glied is given by $G(s) = \frac{K_I}{s (T_1 s + 1)}$ \ref{eq:IT1}, where $K_I$ is the integral gain and $T_1$ is the time constant. It could be seen as a combination of an I-Glied and a PT$_1$-Glied. The transfer function can be rewritten as
+                    \begin{equation}
+                        h(t) = K_I \left[t-T_1({1-\exp^{-\frac{t}{T_1}}})\right]
+                    \end{equation} 
 
-            %     \subsubsection{Parameters needed for characterization}
+                    \missingfigure{Missing figure for the IT$_1$-Glied}
 
-            %     \subsubsection{Step and Impulse response}
+                \subsubsection{Parameters needed for characterization}
+                    For the characterization of an IT$_1$-Glied, the parameters needed are the integral gain $K_I$ and the time constant $T_1$. The integral gain $K_I$ determines proportionality of the function to the integral of the input, while the time constant $T_1$ determines how delayed the response of the system is to changes in the input.
 
-            % \cleardoublepage
+                \subsubsection{Step and Impulse response}
+                    The step response of an IT$_1$-Glied is a function that increases with time, with a shape that is determined by the integral gain $K_I$ and the delay caused by the time constant $T_1$. The impulse response is a function that slowly (with a delay and a shape determined by $T_1$) increases from zero to a the value of the integral of the input impulse scaled by $K_I$.
+
+                    \missingfigure{Missing figure for the IT$_1$-Glied step and impulse response}
+
+            \cleardoublepage
 
             % \subsection{D-Glied}
                 
@@ -302,6 +325,8 @@
         \cleardoublepage
 
         \section{System 1}\label{sec:system1-pt2}
+
+            System 1 is a PT2 system, reacting to a Dirac impulse input and showing a damped oscillatory behaviour ($0 < D < 1$).
             
             \subsection{Experimentaly Identified system parameters}
 
