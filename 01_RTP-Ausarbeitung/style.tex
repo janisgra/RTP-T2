@@ -1,0 +1,101 @@
+\usepackage[manualmark,headsepline,footsepline]{scrlayer-scrpage}
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %Grafik aktivieren
+\usepackage{float}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{pdfcomment}
+
+\usepackage{siunitx}  
+\sisetup{locale = DE,separate-uncertainty}  
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{refs.bib}
+
+
+%% used for pgfplots, tikzpicture
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+\usepgfplotslibrary{patchplots}
+\usepackage{array}
+\usepackage{grffile} 
+\usepackage{amsmath}
+
+\usepackage{todonotes}
+
+\usepackage{listings}
+
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\fwidth
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Kapitel-Layout
+\usepackage{lmodern} 
+\usepackage{xcolor}
+\colorlet{chapter}{black!75}
+\addtokomafont{chapter}{\color{chapter}}
+\makeatletter% siehe De-TeX-FAQ
+\renewcommand*{\chapterformat}{%
+    \begingroup% damit \unitlength-Änderung lokal bleibt 
+    \setlength{\unitlength}{1mm}% 
+    \begin{picture}(20,20)(0,5)% 
+    \setlength{\fboxsep}{0pt}% 
+    \put(20,20){\line(1,0){\dimexpr 
+    \textwidth-20\unitlength\relax\@gobble}}% 
+    \put(0,0){\makebox(15,20)[r]{% 
+    \fontsize{18\unitlength}{28\unitlength}\selectfont\thechapter 
+    \kern-.04em% Ziffer in der Zeichenzelle nach rechts schieben 
+    }}% 
+    \end{picture} % <-- Leerzeichen ist hier beabsichtigt! 
+    \newline
+    \endgroup
+}
+
+\setlength\parindent{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Kopf- und Fußzeilen, Seitenränder etc.
+% Kopf- und Fußzeilen ------------------------------------------------------
+\pagestyle{scrheadings}
+
+% Kopf- und Fußzeile auch auf Kapitelanfangsseiten -------------------------
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+% Schriftform der Kopfzeile ------------------------------------------------
+\renewcommand{\headfont}{%
+\normalfont
+}
+
+% Kopfzeile ----------------------------------------------------------------
+\ihead{Regelungstechnisches Praktikum (RTP)}
+\chead{}
+\ohead{\includegraphics[width=0.3\textwidth]{figure/oth-regensburg-logo}}
+%
+\setlength{\headheight}{21mm} % Höhe der Kopfzeile
+%\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
+
+% Fußzeile -----------------------------------------------------------------
+\ifoot{Name 1 Name 2}
+\cfoot{\today}
+\ofoot{\pagemark}
+
+
+% erzeugt ein wenig mehr Platz hinter einem Punkt --------------------------
+\frenchspacing 
+
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+
+\newcommand{\mt}[1]{\textrm{#1}}
