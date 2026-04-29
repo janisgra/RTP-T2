@@ -95,7 +95,12 @@
                 \subsubsection{Step and Impulse response}
                     The step response of a P-Glied is a step function that reaches a steady state value of $K_p$ times the input step magnitude. The impulse response is an impulse function scaled by $K_p$.
 
-                    \missingfigure{Missing figure for the P-Glied step and impulse response}
+                    \begin{figure}[ht]
+                        \centering
+                        \input{figure/tikz/P-Glied-responses}
+                        \caption{P-Glied: step response (left) and impulse response (right).}
+                        \label{fig:P-Glied-responses}
+                    \end{figure}
 
             \cleardoublepage
 
@@ -215,6 +220,13 @@
                 \subsubsection{Step and Impulse response}
                     The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
 
+                    \begin{figure}[ht]
+                        \centering
+                        \input{figure/tikz/I-Glied-responses}
+                        \caption{I-Glied: step response (left) and impulse response (right).}
+                        \label{fig:I-Glied-responses}
+                    \end{figure}
+
             \cleardoublepage
 
             \subsection{IT$_1$-Glied}
@@ -231,8 +243,6 @@
 
                 \subsubsection{Step and Impulse response}
                     The step response of an IT$_1$-Glied is a function that increases with time, with a shape that is determined by the integral gain $K_I$ and the delay caused by the time constant $T_1$. The impulse response is a function that slowly (with a delay and a shape determined by $T_1$) increases from zero to a the value of the integral of the input impulse scaled by $K_I$.
-
-                    \missingfigure{Missing figure for the IT$_1$-Glied step and impulse response}
 
             \cleardoublepage
 
