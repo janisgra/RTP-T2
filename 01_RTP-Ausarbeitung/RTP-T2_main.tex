@@ -58,7 +58,6 @@
     In preparation for this experiment, the files provided in ELO were downloaded and saved \autocite{RTP_Experiments}. In addition, the step responses for various system behaviours were researched. As tasked in Tasks $task:a)V$ and $task:b)V$ $task:c)V$ $task:d)V$ \\
         
         \section{Different basic system behaviors}
-        \todo{Check names of coloumns again}
         
             \begin{tabular}{m{4.5cm} m{6.5cm} >{\centering\arraybackslash}m{3.5cm}}
                 \textbf{Systemverhalten}                           & \textbf{Übertragungsfunktion}                                                                                                                    & \textbf{Visualization}                                      \\
@@ -79,16 +78,12 @@
             \subsection{P-Glied}
 
                 \subsubsection{Explanation}
-                \todo[inline]{Check explanation of the P-Glied again, look into script}
-
                     Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_p$.
                     The equation for a P-Glied is given by 
                     \begin{equation}
                         x_a(t) = K_p x_e(t)
                     \end{equation}
                     where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$ \ref{eq:P}.
-
-                    %\missingfigure{Missing figure for the P-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     The only parameter needed to characterize a P-Glied is the proportional gain $K_p$. This parameter determines the steady-state gain of the system and how much the output will change in response to a change in the input.
@@ -108,15 +103,14 @@
             \subsection{PT$_1$-Glied}
 
                 \subsubsection{Explanation}
-                \todo[inline]{Check explanation of the PT1-Glied again, look into script}
                     The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by 
+                    
                     \begin{equation}
-                    T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
+                        T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
                     \end{equation}
+
                     or equation \ref{eq:PT1}, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
                 
-                    % \missingfigure{Missing figure for the PT$_1$-Glied}
-
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of a PT$_1$-Glied, the parameters needed are the proportional gain $K_p$ and the time constant $T_1$. The proportional gain $K_p$ determines the steady-state gain of the system, while the time constant $T_1$ determines how quickly the system responds to changes in the input.
                     The System is also characterized by its initial tangent, which is given by $y(t) = \frac{K_p}{T_1} t$. The point at which the initial tangent intersects the steady state value of the step response can be used to determine the time constant $T_1$. $T_1$ is the time it takes for the system to reach approximately $63\%$ of its final value in response to a step input. The threefold multiple of the time constant $T_1$ at which the system reaches $95\%$ of its final value can also be used to characterize the system's response speed. 
@@ -131,13 +125,11 @@
                 \subsubsection{Explanation}
                 \todo[inline]{Check explanation of the PT2-Glied again, look into script}
                     
-                    A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appares delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
+                    A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appears delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
                     \begin{equation}
                         \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
                     \end{equation}
                     or equation \ref{eq:PT2_w0_D} , where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
-
-                    %\missingfigure{Missing figure for the PT$_2$-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_p$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_p$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
@@ -210,10 +202,7 @@
                     Equation \ref{eq:I} can also be rewritten as
                     \begin{equation}                    
                         h(t) = K_I \int_0^t \sigma(\tau) d\tau = K_I t
-                    \end{equation} 
-
-                    %\missingfigure{Missing figure for the I-Glied}
-                
+                    \end{equation}                 
 
                 \subsubsection{Parameters needed for characterization}
                     The only parameter needed to characterize an I-Glied is the integral gain $K_I$. This parameter determines how quickly the output will change in response to a change in the input. The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
@@ -233,11 +222,10 @@
             \subsection{IT$_1$-Glied}
                 \subsubsection{Explanation}
                     The IT$_1$-Glied is a system that consists of an integrator and a first-order part. The transfer function of an IT$_1$-Glied is given by $G(s) = \frac{K_I}{s (T_1 s + 1)}$ \ref{eq:IT1}, where $K_I$ is the integral gain and $T_1$ is the time constant. It could be seen as a combination of an I-Glied and a PT$_1$-Glied. The transfer function can be rewritten as
+                    
                     \begin{equation}
                         h(t) = K_I \left[t-T_1\left(1-e^{-t/T_1}\right)\right]
                     \end{equation} 
-
-                    %\missingfigure{Missing figure for the IT$_1$-Glied}
 
                 \subsubsection{Parameters needed for characterization}
                     For the characterization of an IT$_1$-Glied, the parameters needed are the integral gain $K_I$ and the time constant $T_1$. The integral gain $K_I$ determines proportionality of the function to the integral of the input, while the time constant $T_1$ determines how delayed the response of the system is to changes in the input.
