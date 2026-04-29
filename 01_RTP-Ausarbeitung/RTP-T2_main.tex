@@ -167,7 +167,7 @@
                     \end{equation}
                     The Transferfunction can be caracterized by the upper and lower envelope of the oscillations, which are given by 
                     \begin{equation}
-                        h^\pm(t) = K_p (1 \pm \frac{e^-D\omega_0 t}{\sqrt{1-D^2}})
+                        h^\pm(t) = K_p \left(1 \pm \frac{e^{-D\omega_0 t}}{\sqrt{1-D^2}}\right)
                     \end{equation}
                     
                     The over swing time $t_{max}$, which is the time at which the first maximum of the step response occurs, can be determined from the equation 
@@ -221,7 +221,7 @@
                 \subsubsection{Explanation}
                     The IT$_1$-Glied is a system that consists of an integrator and a first-order part. The transfer function of an IT$_1$-Glied is given by $G(s) = \frac{K_I}{s (T_1 s + 1)}$ \ref{eq:IT1}, where $K_I$ is the integral gain and $T_1$ is the time constant. It could be seen as a combination of an I-Glied and a PT$_1$-Glied. The transfer function can be rewritten as
                     \begin{equation}
-                        h(t) = K_I \left[t-T_1({1-\exp^{-\frac{t}{T_1}}})\right]
+                        h(t) = K_I \left[t-T_1\left(1-e^{-t/T_1}\right)\right]
                     \end{equation} 
 
                     \missingfigure{Missing figure for the IT$_1$-Glied}
@@ -278,8 +278,8 @@
             \subsection{Experimentaly Identified system parameters}
                     The experimentally identified parameters for the PT1 system are as follows:
                     \begin{itemize}
-                        \item Proportional gain $K_p$: [add value]
-                        \item Time constant $T_1$: [add value]
+                        \item Proportional gain $K_p$: $0.999$
+                        \item Time constant $T_1$: $1.000\;\mathrm{s}$
                     \end{itemize}
 
             \begin{figure}[ht]
@@ -306,7 +306,9 @@
 
             \subsection{Realworld Example}
 
-                A practical example of such a PT1 system with impulsive excitation is the temperature response of a small metal body to a brief heat flux. If, for example, a metal rod is briefly excited by a heat source (e.g. hot air or a laser) --- comparable to a Dirac impulse --- the body heats up abruptly and then cools down again via heat conduction and dissipation to the surroundings. The thermal behaviour follows a PT1 model: the temperature rises briefly due to the pulse (corresponding to the step in the output signal) and then falls back to the original level exponentially with a characteristic time constant. The time constant depends on the material properties (heat capacity, thermal conductivity) and the environmental conditions (e.g. convection, radiation). Such system responses frequently occur in sensor technology, materials analysis or in the case of short control pulses in electronic or thermal systems.description of the respective input and output variables.
+                A practical example of such a PT1 system with step excitation is a thermometer that is suddenly placed in a warm bath. The input signal $x_e(t)$ is the bath temperature, which jumps from the ambient value to the bath value as a step at the moment the sensor is immersed. The output signal $x_a(t)$ is the temperature read by the sensor, which does not follow the bath temperature instantaneously: heat must first flow through the sensor housing into the temperature-sensitive element, so the displayed temperature rises exponentially and asymptotically approaches the bath temperature.
+
+                The proportional gain is $K_p = 1$ in this idealised case (in steady state the sensor reads exactly the bath temperature), and the time constant $T_1$ is set by the heat capacity of the sensor element divided by the thermal conductance between the bath and the element (housing material, wall thickness, contact area, convective heat transfer to the bath). After approximately $T_1$ the sensor has reached $63\,\%$ of the temperature jump, after $3 T_1$ approximately $95\,\%$. The same first-order behaviour appears in many other physical settings, for example RC low-pass filters under a step voltage or first-order mass-flow systems under a step inflow.
 
             \subsection{Comparison of given System with the response of the identified system}
 
@@ -332,11 +334,13 @@
 
                 The experimentally identified parameters for the PT2 system are as follows:
                 \begin{itemize}
-                    \item overshoot $h_{max}$: [add value]
-                    \item over swing time $t_{max}$: [add value]
-                    \item the damping ratio $D$: [add value]
-                    \item the natural frequency $\omega_0$: [add value]
-                    \item the periodic time of the oscillations $T_d$: [add value]
+                    \item overshoot $h_{max}$: $28.37$
+                    \item over swing time $t_{max}$: $0.070\;\mathrm{s}$
+                    \item the damping ratio $D$: $0.254$
+                    \item the natural frequency $\omega_0$: $19.69\;\mathrm{1/s}$
+                    \item the periodic time of the oscillations $T_d$: $0.330\;\mathrm{s}$
+                    \item proportional gain $K_p$: $1.945$
+                    \item input pulse area $A_u$: $1.000$
                 \end{itemize}
 
             
@@ -388,9 +392,9 @@
 
                 The experimentally identified parameters for the IT1 system are as follows:
                 \begin{itemize}
-                    \item Proportional gain $K_I$: [add value]
-                    \item Proportionalbeiwert $K_p$: [add value]
-                    \item Time constant $T_1$: [add value]
+                    \item Integral gain $K_I$: $0.300\;\mathrm{1/s}$
+                    \item Proportionalbeiwert $K_p$: $10$ (given)
+                    \item Time constant $T_1$: $0.493\;\mathrm{s}$
                 \end{itemize}
 
             
