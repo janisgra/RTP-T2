@@ -94,12 +94,12 @@
                     The only parameter needed to characterize a P-Glied is the proportional gain $K_p$. This parameter determines the steady-state gain of the system and how much the output will change in response to a change in the input.
 
                 \subsubsection{Step and Impulse response}
-                    The step response of a P-Glied is a step function that reaches a steady state value of $K_p$ times the input step magnitude. The impulse response is an impulse function scaled by $K_p$.
+                    The step response of a P-Glied is a step function that reaches a steady state value of $K_p$ times the input step magnitude. The impulse response is an impulse function scaled by $K_p$. Both responses are sketched in Figure~\ref{fig:P-Glied-responses}.
 
                     \begin{figure}[ht]
                         \centering
                         \input{figure/tikz/P-Glied-responses}
-                        \caption{P-Glied: step response (left) and impulse response (right).}
+                        \caption{P-Glied: step response $h(t) = K_p \sigma(t)$ (left) and impulse response $g(t) = K_p\,\delta(t)$ (right).}
                         \label{fig:P-Glied-responses}
                     \end{figure}
 
@@ -219,12 +219,12 @@
                     The only parameter needed to characterize an I-Glied is the integral gain $K_I$. This parameter determines how quickly the output will change in response to a change in the input. The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
 
                 \subsubsection{Step and Impulse response}
-                    The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$.
+                    The step response of an I-Glied is a ramp function that increases linearly with time, with a slope of $K_I$ times the input step magnitude. The impulse response is a step function scaled by $K_I$. Both responses are sketched in Figure~\ref{fig:I-Glied-responses}.
 
                     \begin{figure}[ht]
                         \centering
                         \input{figure/tikz/I-Glied-responses}
-                        \caption{I-Glied: step response (left) and impulse response (right).}
+                        \caption{I-Glied: step response $h(t) = K_I\,t$ (left) and impulse response $g(t) = K_I\,\sigma(t)$ (right).}
                         \label{fig:I-Glied-responses}
                     \end{figure}
 
@@ -292,11 +292,13 @@
                         \item Proportional gain $K_p$: $0.999$
                         \item Time constant $T_1$: $1.000\;\mathrm{s}$
                     \end{itemize}
+                    The corresponding identification plot, including the input step, the measured response, the analytic initial tangent and the $T_1$ / $3T_1$ markers, is shown in Figure~\ref{fig:sys0-pt1-identification}.
 
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_pt1_identification.pdf}
-                \caption[]{}
+                \caption{System 0 (PT1): input step (left) and measured response with the analytic initial tangent $K_p \Delta u / T_1$, the PT1 model, the steady-state level $x_\infty$ and the $T_1$ and $3T_1$ markers (right).}
+                \label{fig:sys0-pt1-identification}
             \end{figure}
 
             \todo[inline]{add parameters}
@@ -323,17 +325,16 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            \todo[inline]{add short text about differences of the ideal system to the messured PT1 system}
+            The deviation between the measured response and the ideal PT1 model is small over the whole observation window. The residual is dominated by measurement noise that is symmetric around zero and shows no systematic trend, which indicates that the identified parameters $K_p$ and $T_1$ describe the system well and that no further dynamic component is missing from the model. The residual signal is shown in Figure~\ref{fig:sys0-polyfit-error}.
 
-        
+
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_polyfit_error.pdf}
-                \caption[]{}
+                \caption{System 0: residual between the measured step response and the polynomial reference fit (measured $-$ fitted) versus time.}
+                \label{fig:sys0-polyfit-error}
             \end{figure}
 
-
-                \subsubsection{Deviations of the System}
 
         \cleardoublepage
 
@@ -353,14 +354,16 @@
                     \item proportional gain $K_p$: $1.945$
                     \item input pulse area $A_u$: $1.000$
                 \end{itemize}
+                The corresponding identification plot, including the triangular input pulse, the measured impulse response, the underdamped PT2 model, the exponential envelope and the $t_\mathrm{max}$, $x_\mathrm{max}$ and $T_d$ markers, is shown in Figure~\ref{fig:sys1-pt2-identification}.
 
-            
+
             \todo[inline]{add parameters}
-            
+
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_pt2_identification.pdf}
-                \caption[]{}
+                \caption{System 1 (PT2): triangular input pulse (left) and measured impulse response with the underdamped PT2 model, the exponential envelope and the markers $t_\mathrm{max}$, $x_\mathrm{max}$ and $T_d$ (right).}
+                \label{fig:sys1-pt2-identification}
             \end{figure}
 
             \subsection{Documentation of the results}
@@ -384,16 +387,15 @@
 
             \subsection{Comparison of given System with the response of the identified system}
             
-                \todo[inline]{add short text about differences of the ideal system to the messured PT2 system}
+                The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_p$ within the noise level. The residual signal is shown in Figure~\ref{fig:sys1-polyfit-error}.
 
                 \begin{figure}[ht]
                     \centering
                     \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_polyfit_error.pdf}
-                    \caption[]{}
+                    \caption{System 1: residual between the measured impulse response and the polynomial reference fit (measured $-$ fitted) versus time.}
+                    \label{fig:sys1-polyfit-error}
                 \end{figure}
 
-
-                \subsubsection{Deviations of the System}
 
         \cleardoublepage
 
@@ -407,12 +409,14 @@
                     \item Proportionalbeiwert $K_p$: $10$ (given)
                     \item Time constant $T_1$: $0.493\;\mathrm{s}$
                 \end{itemize}
+                The corresponding identification plot, including the input step, the measured response, the IT1 model, the pure-I reference $K_p\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection, is shown in Figure~\ref{fig:sys2-it1-identification}.
 
-            
+
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_identification.pdf}
-                \caption[]{}
+                \caption{System 2 (IT1): input step (left) and measured response with the IT1 model, the pure-I reference $K_p\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection at $t = t_\mathrm{step} + T_1$ (right).}
+                \label{fig:sys2-it1-identification}
             \end{figure}
             
             \todo[inline]{add parameters}
@@ -440,16 +444,14 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            \todo[inline]{add short text about differences of the ideal system to the messured IT1 system}
-            
+            The measured response and the ideal IT1 model agree closely over the whole observation window. The remaining differences are dominated by measurement noise that is symmetric around zero and does not show a systematic trend, so the identified $K_I$ and $T_1$ describe the system well and no additional dynamic effect needs to be added to the model. The residual signal is shown in Figure~\ref{fig:sys2-polyfit-error}.
+
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_polyfit_error.pdf}
-                \caption[]{}
+                \caption{System 2: residual between the measured step response and the polynomial reference fit (measured $-$ fitted) versus time.}
+                \label{fig:sys2-polyfit-error}
             \end{figure}
-
-
-                \subsubsection{Deviations of the System}
 
         \cleardoublepage
 
@@ -461,21 +463,39 @@
         
         \chapter{Appendix Frontmatter}
             
-            \section{Declerations}
+            \section{Declerations}\label{app:statutory}
+                \todo{Fillout erklarung}
+                    \begin{enumerate}
+                        \item Mir ist bekannt, dass dieses Exemplar als Prüfungsleistung in das Eigentum der Ostbayerischen Technischen Hochschule Regensburg übergeht.
+                        \item Ich erkläre hiermit, dass ich diese dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.
+                    \end{enumerate}
 
-                \todo[inline]{add declerations}
+                    \vskip22mm
+                    Regensburg, den 2026-04-17, Janis Graf
+                    \hrule
+                    \vskip1mm
+                    {\footnotesize Ort, Datum und Unterschrift}
+
+                    \vspace{12mm}
+
+                    \noindent\raggedright
+                    {\fontsize{12}{15}\selectfont
+                        \begin{tabular}{@{}l@{\qquad}l@{}}
+                            Verfasser:                                         & theauthor                      \\
+                            Matrikelnummer:                                    & studentid                      \\
+                            Studiengang:                                       & studyprogramme                 \\
+                            Bearbeitungszeitraum:                              & startingdate{} -- closingdate \\
+                            Erstbetreuer:                                      & betreuer             \\
+                        \end{tabular}
+                    }
 
                 \cleardoublepage
 
-            \section{List of Figures}
-
             \listoffigures
-
-            \section{List of Tables}
 
             \listoftables
 
-            \section{List of Variables and Constants used in this report}
+
 
         \chapter{Appendix Code and Resources}
 
