@@ -62,15 +62,15 @@
             \begin{tabular}{m{4.5cm} m{6.5cm} >{\centering\arraybackslash}m{3.5cm}}
                 \textbf{Systemverhalten}                           & \textbf{Übertragungsfunktion}                                                                                                                    & \textbf{Visualization}                                      \\
                 \hline
-                {P-Glied ($K_p$)}                                  & $G(s) = K_p \refstepcounter{equation}(\theequation)\label{eq:P}$                                                                          & \resizebox{2cm}{2cm}{\input{figure/preperations/P-Glied}} \\[4pt]
-                {PT$_1$-Glied ($K_p$, $T_1$)}                      & $G(s) = \dfrac{K_p}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT1}$                                                     & \resizebox{2cm}{2cm}{\input{figure/preperations/PT1-Glied}} \\[4pt]
-                {PT$_2$-Glied ($K_p$, $\omega_0$, $D$)}            & $G(s) = \dfrac{K_p}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT2_w0_D}$ & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied}} \\[4pt]
-                {PT$_2$-Glied für $D \ge 1$ ($K_p$, $T_1$, $T_2$)} & $G(s) = \dfrac{K_p}{(T_1 s + 1)(T_2 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:PT2_T1_T2}$                                  & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied-D1}} \\[4pt]
+                {P-Glied ($K_P$)}                                  & $G(s) = K_P \refstepcounter{equation}(\theequation)\label{eq:P}$                                                                          & \resizebox{2cm}{2cm}{\input{figure/preperations/P-Glied}} \\[4pt]
+                {PT$_1$-Glied ($K_P$, $T_1$)}                      & $G(s) = \dfrac{K_P}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT1}$                                                     & \resizebox{2cm}{2cm}{\input{figure/preperations/PT1-Glied}} \\[4pt]
+                {PT$_2$-Glied ($K_P$, $\omega_0$, $D$)}            & $G(s) = \dfrac{K_P}{\frac{1}{\omega_0^{2}} s^{2} + \frac{2D}{\omega_0} s + 1} \refstepcounter{equation}(\theequation)\label{eq:PT2_w0_D}$ & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied}} \\[4pt]
+                {PT$_2$-Glied für $D \ge 1$ ($K_P$, $T_1$, $T_2$)} & $G(s) = \dfrac{K_P}{(T_1 s + 1)(T_2 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:PT2_T1_T2}$                                  & \resizebox{2cm}{2cm}{\input{figure/preperations/PT2-Glied-D1}} \\[4pt]
                 {I-Glied ($K_I$)}                                  & $G(s) = \dfrac{K_I}{s} \refstepcounter{equation}(\theequation)\label{eq:I}$                                                               & \resizebox{2cm}{2cm}{\input{figure/preperations/I-Glied}} \\[4pt]
                 {IT$_1$-Glied ($K_I$, $T_1$)}                      & $G(s) = \dfrac{K_I}{s (T_1 s + 1)} \refstepcounter{equation}(\theequation)\label{eq:IT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/IT1-Glied}} \\[4pt]
                 {D-Glied ($K_D$)}                                  & $G(s) = K_D\, s \refstepcounter{equation}(\theequation)\label{eq:D}$                                                                      & \resizebox{2cm}{2cm}{\input{figure/preperations/D-Glied}} \\[4pt]
                 {DT$_1$-Glied ($K_D$, $T_1$)}                      & $G(s) = \dfrac{K_D\, s}{T_1 s + 1} \refstepcounter{equation}(\theequation)\label{eq:DT1}$                                                 & \resizebox{2cm}{2cm}{\input{figure/preperations/DT1-Glied}} \\[4pt]
-                {T$_t$-Glied ($K_p$, $T_t$)}                       & $G(s) = K_p\, e^{-T_t s} \refstepcounter{equation}(\theequation)\label{eq:Tt}$                                                            & \resizebox{2cm}{2cm}{\input{figure/preperations/Tt-Glied}} \\
+                {T$_t$-Glied ($K_P$, $T_t$)}                       & $G(s) = K_P\, e^{-T_t s} \refstepcounter{equation}(\theequation)\label{eq:Tt}$                                                            & \resizebox{2cm}{2cm}{\input{figure/preperations/Tt-Glied}} \\
             \end{tabular}
         
             \cleardoublepage
@@ -78,23 +78,23 @@
             \subsection{P-Glied}
 
                 \subsubsection{Explanation}
-                    Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_p$.
+                    Proportional-Glied, show a constant behavior in steady state for a constant input. The output is directly proportional to the input, with the proportionality constant being $K_P$.
                     The equation for a P-Glied is given by 
                     \begin{equation}
-                        x_a(t) = K_p x_e(t)
+                        x_a(t) = K_P x_e(t)
                     \end{equation}
-                    where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_p$ \ref{eq:P}.
+                    where $x_a(t)$ is the output and $x_e(t)$ is the input. The transfer function of a P-Glied is $G(s) = K_P$ \ref{eq:P}.
 
                 \subsubsection{Parameters needed for characterization}
-                    The only parameter needed to characterize a P-Glied is the proportional gain $K_p$. This parameter determines the steady-state gain of the system and how much the output will change in response to a change in the input.
+                    The only parameter needed to characterize a P-Glied is the proportional gain $K_P$. This parameter determines the steady-state gain of the system and how much the output will change in response to a change in the input.
 
                 \subsubsection{Step and Impulse response}
-                    The step response of a P-Glied is a step function that reaches a steady state value of $K_p$ times the input step magnitude. The impulse response is an impulse function scaled by $K_p$. Both responses are sketched in Figure~\ref{fig:P-Glied-responses}.
+                    The step response of a P-Glied is a step function that reaches a steady state value of $K_P$ times the input step magnitude. The impulse response is an impulse function scaled by $K_P$. Both responses are sketched in Figure~\ref{fig:P-Glied-responses}.
 
                     \begin{figure}[ht]
                         \centering
                         \input{figure/tikz/P-Glied-responses}
-                        \caption{P-Glied: step response $h(t) = K_p \sigma(t)$ (left) and impulse response $g(t) = K_p\,\delta(t)$ (right).}
+                        \caption{P-Glied: step response $h(t) = K_P \sigma(t)$ (left) and impulse response $g(t) = K_P\,\delta(t)$ (right).}
                         \label{fig:P-Glied-responses}
                     \end{figure}
 
@@ -106,17 +106,17 @@
                     The PT$_1$-Glied is a first-order delay system that consists of a proportional element and a first-order part. The transfer function of a PT$_1$-Glied is given by 
                     
                     \begin{equation}
-                        T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
+                        T_1 \dot{x}_a + x_a(t) = K_P x_e(t)
                     \end{equation}
 
-                    or equation \ref{eq:PT1}, where $K_p$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
+                    or equation \ref{eq:PT1}, where $K_P$ is the proportional gain and the final value of the function and $T_1$ is the time constant. 
                 
                 \subsubsection{Parameters needed for characterization}
-                    For the characterization of a PT$_1$-Glied, the parameters needed are the proportional gain $K_p$ and the time constant $T_1$. The proportional gain $K_p$ determines the steady-state gain of the system, while the time constant $T_1$ determines how quickly the system responds to changes in the input.
-                    The System is also characterized by its initial tangent, which is given by $y(t) = \frac{K_p}{T_1} t$. The point at which the initial tangent intersects the steady state value of the step response can be used to determine the time constant $T_1$. $T_1$ is the time it takes for the system to reach approximately $63\%$ of its final value in response to a step input. The threefold multiple of the time constant $T_1$ at which the system reaches $95\%$ of its final value can also be used to characterize the system's response speed. 
+                    For the characterization of a PT$_1$-Glied, the parameters needed are the proportional gain $K_P$ and the time constant $T_1$. The proportional gain $K_P$ determines the steady-state gain of the system, while the time constant $T_1$ determines how quickly the system responds to changes in the input.
+                    The System is also characterized by its initial tangent, which is given by $y(t) = \frac{K_P}{T_1} t$. The point at which the initial tangent intersects the steady state value of the step response can be used to determine the time constant $T_1$. $T_1$ is the time it takes for the system to reach approximately $63\%$ of its final value in response to a step input. The threefold multiple of the time constant $T_1$ at which the system reaches $95\%$ of its final value can also be used to characterize the system's response speed. 
 
                 \subsubsection{Step and Impulse response}
-                    The step response of a PT$_1$-Glied is an exponential function that approaches a steady state value of $K_p$ times the input step magnitude, with a time constant of $T_1$. The impulse response is an exponential function scaled by $K_p/T_1$.
+                    The step response of a PT$_1$-Glied is an exponential function that approaches a steady state value of $K_P$ times the input step magnitude, with a time constant of $T_1$. The impulse response is an exponential function scaled by $K_P/T_1$.
 
             \cleardoublepage
 
@@ -125,19 +125,19 @@
                 \subsubsection{Explanation}
                 %\todo[inline]{Check explanation of the PT2-Glied again, look into script}
                     
-                    A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appears delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
+                    A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appears delayed and oscillatory behavior because of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
                     \begin{equation}
-                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
+                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_P x_e(t)
                     \end{equation}
-                    or equation \ref{eq:PT2_w0_D} , where $K_p$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
+                    or equation \ref{eq:PT2_w0_D} , where $K_P$ is the proportional gain, $\omega_0$ is the natural frequency, and $D$ is the damping ratio.
 
                 \subsubsection{Parameters needed for characterization}
-                    For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_p$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_p$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
+                    For the characterization of a PT$_2$-Glied, the parameters needed are the proportional gain $K_P$, the natural frequency $\omega_0$, and the damping ratio $D$. The proportional gain $K_P$ determines the steady-state gain of the system, while the natural frequency $\omega_0$ and damping ratio $D$ determine the oscillatory behavior and response speed of the system. The damping ratio $D$ indicates whether the system is underdamped ($D < 1$), critically damped ($D = 1$), overdamped ($D > 1$) or undamped ($D = 0$).
 
                     For an underdamped system ($D < 1$), the step response will exhibit oscillations before settling to the steady state value. The natural frequency $\omega_0$ determines the frequency of these oscillations, while the damping ratio $D$ determines how quickly the oscillations decay. 
                     For a critically damped system ($D = 1$), the step response will reach the steady state value without oscillating, and it will do so as quickly as possible without overshooting. It is often reached by putting two PT$_1$-Glied in series, which results in the transfer function given by 
                     \begin{equation}
-                        T_1T_2 \ddot{x}_a + (T_1 + T_2) \dot{x}_a + x_a(t) = K_p x_e(t)
+                        T_1T_2 \ddot{x}_a + (T_1 + T_2) \dot{x}_a + x_a(t) = K_P x_e(t)
                     \end{equation}
                     or 
                     \begin{equation}
@@ -145,7 +145,7 @@
                     \end{equation}
                     For an overdamped system ($D > 1$), the step response will reach the steady state value without oscillating, but it will take longer to do so than a critically damped system. The Transfer function can be rewritten as 
                     \begin{equation}
-                        h(t) = K_p \left(1 + \frac{1}{\lambda_1 - \lambda_2}(\lambda_2e^{-\lambda_1t} - \lambda_1e^{-\lambda_2t})\right)
+                        h(t) = K_P \left(1 + \frac{1}{\lambda_1 - \lambda_2}(\lambda_2e^{-\lambda_1t} - \lambda_1e^{-\lambda_2t})\right)
                     \end{equation} 
                     where $\lambda_1$ and $\lambda_2$ are the eigenvalues of the characteristic equation of the system, given by 
                     \begin{equation}
@@ -156,16 +156,16 @@
 
                     For the case $0 < D < 1$, the transfer function can be rewritten as 
                     \begin{equation}
-                        h(t) = K_p \left(1 - \frac{e^{-\omega_0 D t}}{\sqrt{1 - D^2}} \sin(\omega_d t + \phi)\right)
+                        h(t) = K_P \left(1 - \frac{e^{-\omega_0 D t}}{\sqrt{1 - D^2}} \sin(\omega_d t + \phi)\right)
                     \end{equation}
 
                     The Periodic time of the oscillations can be determined from the damped natural frequency 
                     \begin{equation}
                         T_d = \frac{2\pi}{\omega_d} = \frac{2\pi}{\omega_0 \sqrt{1 - D^2}}
                     \end{equation}
-                    The Transferfunction can be caracterized by the upper and lower envelope of the oscillations, which are given by 
+                    The transfer function can be characterized by the upper and lower envelope of the oscillations, which are given by 
                     \begin{equation}
-                        h^\pm(t) = K_p \left(1 \pm \frac{e^{-D\omega_0 t}}{\sqrt{1-D^2}}\right)
+                        h^\pm(t) = K_P \left(1 \pm \frac{e^{-D\omega_0 t}}{\sqrt{1-D^2}}\right)
                     \end{equation}
                     
                     The over swing time $t_{max}$, which is the time at which the first maximum of the step response occurs, can be determined from the equation 
@@ -176,7 +176,7 @@
 
                     The overshoot $h_{max}$, can be determined from the equation 
                     \begin{equation}
-                        h_{max} = h(t_{max}) = K_p \left(1 + e^{-\pi D/\sqrt{1-D^2}}\right)
+                        h_{max} = h(t_{max}) = K_P \left(1 + e^{-\pi D/\sqrt{1-D^2}}\right)
                     \end{equation}
                     The normalized overshoot value $\ddot{u}$ can be determined from the equation
                     \begin{equation}
@@ -188,14 +188,14 @@
                     \end{equation}
 
 
-                \subsubsection{Step and Impulse response}
+                %\subsubsection{Step and Impulse response}
 
             \cleardoublepage
             
             \subsection{I-Glied}
                 \subsubsection{Explanation}
 
-                    Integral-Glied, are transfer functions that consist of an integrator of input signal, the output $x_a(t)$ is proportional to the integral of the input $x_e(t)$, with the proportionality constant being $K_I$. The transfer function of an I-Glied is given by $G(s) = \frac{K_I}{s}$ \ref{eq:I}. given by the equation
+                    Integral-Glied, are transfer functions that consist of an integrator of input signal, the output $x_a(t)$ is proportional to the integral of the input $x_e(t)$, with the proportionality constant being $K_I$. The transfer function of an I-Glied is given by $G(s) = \frac{K_I}{s}$ \ref{eq:I}. Can be rewritten as:
                     \begin{equation}
                         x_a(t) = K_I \int_0^t x_e(\tau) d\tau
                     \end{equation}
@@ -231,7 +231,7 @@
                     For the characterization of an IT$_1$-Glied, the parameters needed are the integral gain $K_I$ and the time constant $T_1$. The integral gain $K_I$ determines proportionality of the function to the integral of the input, while the time constant $T_1$ determines how delayed the response of the system is to changes in the input.
 
                 \subsubsection{Step and Impulse response}
-                    The step response of an IT$_1$-Glied is a function that increases with time, with a shape that is determined by the integral gain $K_I$ and the delay caused by the time constant $T_1$. The impulse response is a function that slowly (with a delay and a shape determined by $T_1$) increases from zero to a the value of the integral of the input impulse scaled by $K_I$.
+                    The step response of an IT$_1$-Glied is a function that increases with time, with a shape that is determined by the integral gain $K_I$ and the delay caused by the time constant $T_1$. The impulse response is a function that slowly (with a delay and a shape determined by $T_1$) increases from zero to the value of the integral of the input impulse scaled by $K_I$.
 
             \cleardoublepage
 
@@ -270,14 +270,14 @@
 
     \chapter{Experiment T2: System identification}
 
-        For the 3 systems investigated in this experiment, the following paragraphs will present the experimentally identified system parameters, a documentation of the results, a real-world example of such a system, and a comparison of the given system with the ideal response of the identified system. The identifided systems are a PT1-glied for system 0 with a step-function input\ref{sec:system0-pt1}, a PT2-glied for system 1 with a Dirac-impulse input\ref{sec:system1-pt2}, and an IT1-glied for system 2 with a step-function input\ref{sec:system2-it1}.
+        For the 3 systems investigated in this experiment, the following paragraphs will present the experimentally identified system parameters, a documentation of the results, a real-world example of such a system, and a comparison of the given system with the ideal response of the identified system. The identified systems are a PT1-glied for system 0 with a step-function input (Section~\ref{sec:system0-pt1}), a PT2-glied for system 1 with a Dirac-impulse input (Section~\ref{sec:system1-pt2}), and an IT1-glied for system 2 with a step-function input (Section~\ref{sec:system2-it1}).
 
         \section{System 0 --- PT1}\label{sec:system0-pt1}
             
-            \subsection{Experimentaly Identified system parameters}
+            \subsection{Experimentally  Identified system parameters}
                     The experimentally identified parameters for the PT1 system are as follows:
                     \begin{itemize}
-                        \item Proportional gain $K_p$: $0.999$
+                        \item Proportional gain $K_P$: $0.999$
                         \item Time constant $T_1$: $1.000\;\mathrm{s}$
                     \end{itemize}
                     The corresponding identification plot, including the input step, the measured response, the analytic initial tangent and the $T_1$ / $3T_1$ markers, is shown in Figure~\ref{fig:sys0-pt1-identification}.
@@ -285,7 +285,7 @@
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_pt1_identification.pdf}
-                \caption{System 0 (PT1): input step (left) and measured response with the analytic initial tangent $K_p \Delta u / T_1$, the PT1 model, the steady-state level $x_\infty$ and the $T_1$ and $3T_1$ markers (right).}
+                \caption{System 0 (PT1): input step (left) and measured response with the analytic initial tangent $K_P \Delta u / T_1$, the PT1 model, the steady-state level $x_\infty$ and the $T_1$ and $3T_1$ markers (right).}
                 \label{fig:sys0-pt1-identification}
             \end{figure}
 
@@ -306,7 +306,7 @@ np.where((u[:-1] < 1.0) & (u[1:] >= 1.0))
 
     \item \emph{Steady-state gain:}
     \begin{lstlisting}
-K_p = (x_inf - x_0) / (u_inf - u_0)
+K_P = (x_inf - x_0) / (u_inf - u_0)
     \end{lstlisting}
 
     \item \emph{Time constant} $T_1$ from the 63\,\% level: first index where the normalised rise reaches $1 - e^{-1}$; cross-checked at the 95\,\% level ($1 - e^{-3} \Rightarrow 3 T_1$):
@@ -317,7 +317,7 @@ idx_63 = np.argmax(rise >= 1 - np.exp(-1))
 
     \item \emph{Initial tangent slope:}
     \begin{lstlisting}
-slope = K_p * du / T1
+slope = K_P * du / T1
     \end{lstlisting}
 
     \item \emph{PT1 step model:}
@@ -329,29 +329,29 @@ x_model = x_0 + dx * (1 - np.exp(-(t - t_step) / T1))
                 \subsubsection{Differential Equation}
                     The differential equation for a PT1 system can be derived from the transfer function and is given by
                     \begin{equation}
-                        T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
+                        T_1 \dot{x}_a + x_a(t) = K_P x_e(t)
                     \end{equation}
 
                 \subsubsection{Transfer Function}
                     The transfer function for a PT1 system can be derived from the differential equation and is given by
                     \begin{equation}
-                        G(s) = \frac{K_p}{T_1 s + 1}
+                        G(s) = \frac{K_P}{T_1 s + 1}
                     \end{equation}
 
             \subsection{Realworld Example}
 
                 A practical example of such a PT1 system with step excitation is a thermometer that is suddenly placed in a warm bath. The input signal $x_e(t)$ is the bath temperature, which jumps from the ambient value to the bath value as a step at the moment the sensor is immersed. The output signal $x_a(t)$ is the temperature read by the sensor, which does not follow the bath temperature instantaneously: heat must first flow through the sensor housing into the temperature-sensitive element, so the displayed temperature rises exponentially and asymptotically approaches the bath temperature.
 
-                The proportional gain is $K_p = 1$ in this idealised case (in steady state the sensor reads exactly the bath temperature), and the time constant $T_1$ is set by the heat capacity of the sensor element divided by the thermal conductance between the bath and the element (housing material, wall thickness, contact area, convective heat transfer to the bath). After approximately $T_1$ the sensor has reached $63\,\%$ of the temperature jump, after $3 T_1$ approximately $95\,\%$. The same first-order behaviour appears in many other physical settings, for example RC low-pass filters under a step voltage or first-order mass-flow systems under a step inflow.
+                The proportional gain is $K_P = 1$ in this idealised case (in steady state the sensor reads exactly the bath temperature), and the time constant $T_1$ is set by the heat capacity of the sensor element divided by the thermal conductance between the bath and the element (housing material, wall thickness, contact area, convective heat transfer to the bath). After approximately $T_1$ the sensor has reached $63\,\%$ of the temperature jump, after $3 T_1$ approximately $95\,\%$. The same first-order behaviour appears in many other physical settings, for example RC low-pass filters under a step voltage or first-order mass-flow systems under a step inflow.
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            The deviation between the measured response and the ideal PT1 model is small over the whole observation window. The residual is dominated by measurement noise that is symmetric around zero and shows no systematic trend, which indicates that the identified parameters $K_p$ and $T_1$ describe the system well and that no further dynamic component is missing from the model. The deviation between the identified PT1 model $h(t) = K_p\,\Delta u\,(1 - e^{-t/T_1})$ and the measured response is shown in Figure~\ref{fig:sys0-pt1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys0-polyfit-error} for context.
+            The deviation between the measured response and the ideal PT1 model is small over the whole observation window. The residual is dominated by measurement noise that is symmetric around zero and shows no systematic trend, which indicates that the identified parameters $K_P$ and $T_1$ describe the system well and that no further dynamic component is missing from the model. The deviation between the identified PT1 model $h(t) = K_P\,\Delta u\,(1 - e^{-t/T_1})$ and the measured response is shown in Figure~\ref{fig:sys0-pt1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys0-polyfit-error} for context.
 
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_pt1_deviation.pdf}
-                \caption{System 0 (PT1): measured response together with the identified PT1 model $h(t) = K_p\,\Delta u\,(1 - e^{-t/T_1})$ (top) and the resulting deviation (measured $-$ model) versus time (bottom).}
+                \caption{System 0 (PT1): measured response together with the identified PT1 model $h(t) = K_P\,\Delta u\,(1 - e^{-t/T_1})$ (top) and the resulting deviation (measured $-$ model) versus time (bottom).}
                 \label{fig:sys0-pt1-deviation}
             \end{figure}
 
@@ -369,7 +369,7 @@ x_model = x_0 + dx * (1 - np.exp(-(t - t_step) / T1))
 
             System 1 is a PT2 system, reacting to a Dirac impulse input and showing a damped oscillatory behaviour ($0 < D < 1$).
             
-            \subsection{Experimentaly Identified system parameters}
+            \subsection{Experimentally  Identified system parameters}
 
                 The experimentally identified parameters for the PT2 system are as follows:
                 \begin{itemize}
@@ -378,7 +378,7 @@ x_model = x_0 + dx * (1 - np.exp(-(t - t_step) / T1))
                     \item the damping ratio $D$: \num{0.248}
                     \item the natural frequency $\omega_0$: \SI{19.69}{\per\second}
                     \item the periodic time of the oscillations $T_d$: \SI{0.320}{\second}
-                    \item proportional gain $K_p$: \num{1.986}
+                    \item proportional gain $K_P$: \num{1.986}
                     \item input pulse area $A_u$: \num{1.000}
                 \end{itemize}
                 The corresponding identification plot, including the triangular input pulse, the measured impulse response, the periodic PT2 model, the exponential envelope and the $t_\mathrm{max}$, $x_\mathrm{max}$ and $T_d$ markers, is shown in Figure~\ref{fig:sys1-pt2-identification}.
@@ -412,7 +412,7 @@ A_u = u_step[-1]
 
     \item \emph{Static gain} from the integrated step response:
     \begin{lstlisting}
-K_p = x_step_inf / A_u
+K_P = x_step_inf / A_u
     \end{lstlisting}
 
     \item \emph{First peak of the step response} ($\Rightarrow t_\mathrm{max}$, $x_\mathrm{max}$):
@@ -439,7 +439,7 @@ T_d = 2 * np.pi / (omega_0 * np.sqrt(1 - D**2))
     \item \emph{PT2 step model} with phase $\varphi$:
     \begin{lstlisting}
 phi = np.arctan2(np.sqrt(1 - D**2), D)
-x_model = K_p * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin(omega_d * t + phi))
+x_model = K_P * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin(omega_d * t + phi))
     \end{lstlisting}
 \end{itemize}
 
@@ -447,29 +447,29 @@ x_model = K_p * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin
                 \subsubsection{Differential Equation}
                     The differential equation for a PT2 system can be derived from the transfer function and is given by
                     \begin{equation}
-                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
+                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_P x_e(t)
                     \end{equation}
 
                 \subsubsection{Transfer Function}
                     The Transfer function for the PT2 system can be derived from the differential equation and is given by
                     \begin{equation}
-                        G(s) = \frac{K_p}{\frac{1}{\omega_0^2} s^2 + \frac{2D}{\omega_0} s + 1}
+                        G(s) = \frac{K_P}{\frac{1}{\omega_0^2} s^2 + \frac{2D}{\omega_0} s + 1}
                     \end{equation}
 
             \subsection{Realworld Example}
 
                 A classic example of a PT2 system with underdamped behaviour is a mass--spring--damper system excited by a step force. The input signal $x_e(t)$ is the applied force $F(t)$, which jumps from zero to a constant value at the moment of excitation. The output signal $x_a(t)$ is the displacement of the mass from its rest position, which does not jump immediately to the new equilibrium: the mass first overshoots, then performs damped oscillations around the steady-state value before settling.
 
-                The equation of motion $m\,\ddot{x}_a + c\,\dot{x}_a + k\,x_a = F(t)$ matches the standard PT2 form with proportional gain $K_p = 1/k$ (the steady-state compliance, i.e.\ the inverse of the spring stiffness), natural frequency $\omega_0 = \sqrt{k/m}$ (set by mass $m$ and stiffness $k$), and damping ratio $D = c/(2\sqrt{mk})$ (set by the damping coefficient $c$ relative to the critical damping). For $0 < D < 1$ the response shows the characteristic overshoot and decaying oscillation, with a damped period $T_d = 2\pi/(\omega_0\sqrt{1 - D^2})$ and a first peak at $t_\mathrm{max} = \pi/(\omega_0\sqrt{1 - D^2})$. The same second-order behaviour appears in many other physical settings, for example a series RLC circuit driven by a step voltage (output: capacitor voltage, with $\omega_0 = 1/\sqrt{LC}$ and $D = (R/2)\sqrt{C/L}$), a moving-coil galvanometer responding to a step current, or a passive vehicle suspension reacting to a sudden load change.
+                The equation of motion $m\,\ddot{x}_a + c\,\dot{x}_a + k\,x_a = F(t)$ matches the standard PT2 form with proportional gain $K_P = 1/k$ (the steady-state compliance, i.e.\ the inverse of the spring stiffness), natural frequency $\omega_0 = \sqrt{k/m}$ (set by mass $m$ and stiffness $k$), and damping ratio $D = c/(2\sqrt{mk})$ (set by the damping coefficient $c$ relative to the critical damping). For $0 < D < 1$ the response shows the characteristic overshoot and decaying oscillation, with a damped period $T_d = 2\pi/(\omega_0\sqrt{1 - D^2})$ and a first peak at $t_\mathrm{max} = \pi/(\omega_0\sqrt{1 - D^2})$. The same second-order behaviour appears in many other physical settings, for example a series RLC circuit driven by a step voltage (output: capacitor voltage, with $\omega_0 = 1/\sqrt{LC}$ and $D = (R/2)\sqrt{C/L}$), a moving-coil galvanometer responding to a step current, or a passive vehicle suspension reacting to a sudden load change.
 
             \subsection{Comparison of given System with the response of the identified system}
 
-                The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_p$ within the noise level. The deviation between the integrated step response $\int x(\tau)\,d\tau$ and the identified PT2 model is shown in Figure~\ref{fig:sys1-pt2-deviation}; the residual against the polynomial reference fit of the impulse response is shown in Figure~\ref{fig:sys1-polyfit-error} for context.
+                The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_P$ within the noise level. The deviation between the integrated step response $\int x(\tau)\,d\tau$ and the identified PT2 model is shown in Figure~\ref{fig:sys1-pt2-deviation}; the residual against the polynomial reference fit of the impulse response is shown in Figure~\ref{fig:sys1-polyfit-error} for context.
 
                 \begin{figure}[ht]
                     \centering
                     \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_pt2_deviation.pdf}
-                    \caption{System 1 (PT2): integrated step response $\int x(\tau)\,d\tau$ together with the identified PT2 model $h(t) = K_p\,A_u\left[1 - \tfrac{e^{-D\omega_0 t}}{\sqrt{1 - D^2}}\sin(\omega_d t + \phi)\right]$ (top) and the resulting deviation versus time (bottom).}
+                    \caption{System 1 (PT2): integrated step response $\int x(\tau)\,d\tau$ together with the identified PT2 model $h(t) = K_P\,A_u\left[1 - \tfrac{e^{-D\omega_0 t}}{\sqrt{1 - D^2}}\sin(\omega_d t + \phi)\right]$ (top) and the resulting deviation versus time (bottom).}
                     \label{fig:sys1-pt2-deviation}
                 \end{figure}
 
@@ -485,21 +485,21 @@ x_model = K_p * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin
 
         \section{System 2}\label{sec:system2-it1}
             
-            \subsection{Experimentaly Identified system parameters}
+            \subsection{Experimentally  Identified system parameters}
 
                 The experimentally identified parameters for the IT1 system are as follows:
                 \begin{itemize}
-                    \item Integral gain $K_I$: \SI{0.300}{\per\sec}
-                    \item Proportionalbeiwert $K_p$: \num{10} (given)
-                    \item Time constant $T_1$: \SI{0.493}{\sec}
+                    \item Integral gain $K_I$: \SI{0.300}{\per\second}
+                    \item Proportionalbeiwert $K_P$: \num{10} (given)
+                    \item Time constant $T_1$: \SI{0.493}{\second}
                 \end{itemize}
-                The corresponding identification plot, including the input step, the measured response, the IT1 model, the pure-I reference $K_p\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection, is shown in Figure~\ref{fig:sys2-it1-identification}.
+                The corresponding identification plot, including the input step, the measured response, the IT1 model, the pure-I reference $K_P\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection, is shown in Figure~\ref{fig:sys2-it1-identification}.
 
 
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_identification.pdf}
-                \caption{System 2 (IT1): input step (left) and measured response with the IT1 model, the pure-I reference $K_p\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection at $t = t_\mathrm{step} + T_1$ (right).}
+                \caption{System 2 (IT1): input step (left) and measured response with the IT1 model, the pure-I reference $K_P\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection at $t = t_\mathrm{step} + T_1$ (right).}
                 \label{fig:sys2-it1-identification}
             \end{figure}
             
@@ -523,9 +523,9 @@ np.where((u[:-1] < 1.0) & (u[1:] >= 1.0))
 slope_inf, intercept_inf = np.polyfit(t[tail:], x[tail:], 1)
     \end{lstlisting}
 
-    \item \emph{Integral gain} from the asymptotic slope and the given $K_p = 10$:
+    \item \emph{Integral gain} from the asymptotic slope and the given $K_P = 10$:
     \begin{lstlisting}
-K_I = slope_inf / (du * K_p_plant)
+K_I = slope_inf / (du * K_P_plant)
     \end{lstlisting}
 
     \item \emph{Time-axis intersection} of the asymptote:
@@ -540,16 +540,16 @@ T_1 = t_intersect - t_step
 
     \item \emph{IT1 step model:}
     \begin{lstlisting}
-x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
+x_model = x_0 + K_P * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
     \end{lstlisting}
 
-    \item \emph{Pure-I reference} for visual comparison: cumulative trapezoidal of $u(t) - u_0$ scaled by $K_p \cdot K_I$.
+    \item \emph{Pure-I reference} for visual comparison: cumulative trapezoidal of $u(t) - u_0$ scaled by $K_P \cdot K_I$.
 \end{itemize}
 
                 \subsubsection{Differential Equation}
                     The differential equation for an IT1 system can be derived from the transfer function and is given by
                     \begin{equation}
-                        T_1 \dot{x}_a + x_a(t) = K_I \int_0^t x_e(t) dt
+                        T_1 \dot{x}_a + x_a(t) = K_I \int x_e(t) dt
                     \end{equation}
 
                 \subsubsection{Transfer Function}
@@ -566,12 +566,12 @@ x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            The measured response and the ideal IT1 model agree closely over the whole observation window. The remaining differences are dominated by measurement noise that is symmetric around zero and does not show a systematic trend, so the identified $K_I$ and $T_1$ describe the system well and no additional dynamic effect needs to be added to the model. The deviation between the identified IT1 model $h(t) = K_p\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ and the measured response is shown in Figure~\ref{fig:sys2-it1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys2-polyfit-error} for context.
+            The measured response and the ideal IT1 model agree closely over the whole observation window. The remaining differences are dominated by measurement noise that is symmetric around zero and does not show a systematic trend, so the identified $K_I$ and $T_1$ describe the system well and no additional dynamic effect needs to be added to the model. The deviation between the identified IT1 model $h(t) = K_P\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ and the measured response is shown in Figure~\ref{fig:sys2-it1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys2-polyfit-error} for context.
 
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_deviation.pdf}
-                \caption{System 2 (IT1): measured response together with the identified IT1 model $h(t) = K_p\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ (top) and the resulting deviation versus time (bottom).}
+                \caption{System 2 (IT1): measured response together with the identified IT1 model $h(t) = K_P\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ (top) and the resulting deviation versus time (bottom).}
                 \label{fig:sys2-it1-deviation}
             \end{figure}
 
@@ -587,15 +587,15 @@ x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
 
 
     \appendix
-        \makeatletter
+        %\makeatletter
 
         
         \chapter{Appendix Frontmatter}
             
-            \section{Declerations}\label{app:statutory}
+            \section{Declarations}\label{app:statutory}
 
                 \begin{enumerate}
-                    \item Ich erkläre hiermit, dass ich diese dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.
+                    \item Wir erkläre hiermit, dass wir dieses Dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet haben.
                 \end{enumerate}
 
                 \vskip22mm
@@ -632,8 +632,8 @@ x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
 
                     The complete source can be obtained by either of the following means:
                     \begin{itemize}
-                        \item By email request to \texttt{janis.graf@st.oth-regnesburg.de}
-                        \item Via requesting acces to the GitHub repository: \url{https://github.com/janisgra/RTP-T2}
+                        \item By email request to \texttt{janis.graf@st.oth-regensburg.de}
+                        \item Via requesting access to the GitHub repository: \url{https://github.com/janisgra/RTP-T2}
                     \end{itemize}
                 \end{tcolorbox}
 
