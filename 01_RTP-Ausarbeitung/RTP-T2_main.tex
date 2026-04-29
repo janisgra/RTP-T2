@@ -26,7 +26,7 @@
                 \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
                 \par
                 {\large Versuch 1}\\[1cm]
-                %{\large empty} \\[1cm]
+                {\large \today} \\[1cm]
             \end{center}
             }
         
@@ -42,7 +42,7 @@
         Marius Off\\
         Janis Graf\\
         \vspace{0.5cm}
-        \texttt{Dokument-Version: 02}\\
+        %\texttt{Dokument-Version: 02}\\
         \end{center}
     
     \end{minipage}
@@ -55,7 +55,7 @@
 
     \chapter{Preperations}\label{chap:preperations}
     
-    In preparation for this experiment, the files provided in ELO were downloaded and saved \autocite{RTP_Experiments}. In addition, the step responses for various system behaviours were researched. As tasked in Tasks $task:a)V$ and $task:b)V$ $task:c)V$ $task:d)V$ \\
+    In preparation for this experiment, the files provided in ELO were downloaded and saved. In addition, the step responses for various system behaviours were researched. As tasked in Tasks $task:a)V$ and $task:b)V$ $task:c)V$ $task:d)V$ \\ %\autocite{RTP_Experiments}
         
         \section{Different basic system behaviors}
         
@@ -458,11 +458,12 @@ x_model = K_p * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin
 
             \subsection{Realworld Example}
 
-                \todo[inline]{add realworld example for PT2 system, look into script}
-                description of the respective input and output variables.
+                A classic example of a PT2 system with underdamped behaviour is a mass--spring--damper system excited by a step force. The input signal $x_e(t)$ is the applied force $F(t)$, which jumps from zero to a constant value at the moment of excitation. The output signal $x_a(t)$ is the displacement of the mass from its rest position, which does not jump immediately to the new equilibrium: the mass first overshoots, then performs damped oscillations around the steady-state value before settling.
+
+                The equation of motion $m\,\ddot{x}_a + c\,\dot{x}_a + k\,x_a = F(t)$ matches the standard PT2 form with proportional gain $K_p = 1/k$ (the steady-state compliance, i.e.\ the inverse of the spring stiffness), natural frequency $\omega_0 = \sqrt{k/m}$ (set by mass $m$ and stiffness $k$), and damping ratio $D = c/(2\sqrt{mk})$ (set by the damping coefficient $c$ relative to the critical damping). For $0 < D < 1$ the response shows the characteristic overshoot and decaying oscillation, with a damped period $T_d = 2\pi/(\omega_0\sqrt{1 - D^2})$ and a first peak at $t_\mathrm{max} = \pi/(\omega_0\sqrt{1 - D^2})$. The same second-order behaviour appears in many other physical settings, for example a series RLC circuit driven by a step voltage (output: capacitor voltage, with $\omega_0 = 1/\sqrt{LC}$ and $D = (R/2)\sqrt{C/L}$), a moving-coil galvanometer responding to a step current, or a passive vehicle suspension reacting to a sudden load change.
 
             \subsection{Comparison of given System with the response of the identified system}
-            
+
                 The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_p$ within the noise level. The deviation between the integrated step response $\int x(\tau)\,d\tau$ and the identified PT2 model is shown in Figure~\ref{fig:sys1-pt2-deviation}; the residual against the polynomial reference fit of the impulse response is shown in Figure~\ref{fig:sys1-polyfit-error} for context.
 
                 \begin{figure}[ht]
@@ -559,10 +560,9 @@ x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
 
             \subsection{Realworld Example}
 
-                A clear example of an IT1 element with an upstream dead time is a water tank with a constant inflow and proportional outflow. The inflow corresponds to the input signal, and the water level to the output signal. The storage results in integrative behaviour, whilst the proportional outflow causes first-order damping --- typical of an IT1 system.
-                
-                In the experimental setup under consideration, a dead-time element was connected upstream of the IT1 element, causing a time delay in the input signal. This means that the system output only reacts to a change after the dead time has elapsed. Such combinations of dead time and IT1 behaviour frequently occur in real-world processes, for example in sluggish piping systems or delayed control variable transmissions.
-                description of the respective input and output variables.
+                A clear example of an IT1 system is a water tank fed by an inflow $x_e(t)$ and drained through a linear resistance to a downstream sink. The inflow corresponds to the input signal, and the water level $x_a(t)$ to the output signal. The storage of the tank gives the system its integrative behaviour --- as long as the inflow exceeds the outflow, the level keeps rising --- while the proportional outflow causes a first-order lag with time constant $T_1 = A/k$, where $A$ is the cross-sectional area of the tank and $k$ is the linear hydraulic conductance of the outflow.
+
+                The integral gain is $K_I = 1/A$ (a unit inflow integrates into a unit volume change, divided by the cross-section to obtain a level change). After a step change in inflow the level first lags behind for a duration of order $T_1$ and then approaches a straight ramp of slope $K_I\,\Delta x_e$. The same IT1 behaviour appears in other accumulating systems with first-order losses, for example a heated body with a fixed heat input and a proportional convective loss to the ambient, or a capacitor charged through a current source while leaking through a parallel resistor.
 
             \subsection{Comparison of given System with the response of the identified system}
 
@@ -619,16 +619,45 @@ x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
 
             \section{Code used for the analysis of the Preperations and the Experiment}
 
-            \todo[inline]{add code for the analysis of the preperations, look into jupyter notebook}
+            %\todo[inline]{add code for the analysis of the preperations, look into jupyter notebook}
+
+                \begin{tcolorbox}[
+                    colback=red!10,
+                    colframe=red!70!black,
+                    title=\textbf{Editorial note — Source code omitted},
+                    fonttitle=\bfseries,
+                    sharp corners=south,
+                ]
+                    The full source code for the analysis (a Jupyter notebook of approximately 2{,}000 lines) is \emph{not} included in this appendix. Including it as a verbatim listing caused build instability and was therefore deliberately omitted.
+
+                    The complete source can be obtained by either of the following means:
+                    \begin{itemize}
+                        \item By email request to \texttt{janis.graf@st.oth-regnesburg.de}
+                        \item Via requesting acces to the GitHub repository: \url{https://github.com/janisgra/RTP-T2}
+                    \end{itemize}
+                \end{tcolorbox}
+
+            % \lstinputlisting[
+            %     style=codeblock,
+            %     language=Python,
+            %     caption={Code used for the analysis of the preparations},
+            %     label={lst:preparations},
+            %     basicstyle=\ttfamily\tiny,
+            %     breaklines=true,
+            %     numbers=left,
+            %     numberstyle=\tiny\color{gray},
+            %     numbersep=6pt,
+            % ]{../02_Preperations/RTP-T2-analysis.py}
 
             %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
-
+            % To get the code from the jupyter notebook into the latex document, run `jupyter nbconvert --to script  .\02_Preperations\RTP-T2-analysis.ipynb` in the terminal, which will create a .py file'
+            % And run `iconv -f utf-8 -t ascii//TRANSLIT ../02_Preperations/RTP-T2-analysis.py -o ../02_Preperations/RTP-T2-analysis.py' to convert the file to ascii, which is needed for the lstinputlisting command to work properly. also check the - -- --- dashes manualy they are not reliable converted by the iconv command
 
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \chapter{Bibliography}
+        %\chapter{Bibliography}
         %%%Literaturverzeichnis
-        \printbibliography
+        % \printbibliography
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
