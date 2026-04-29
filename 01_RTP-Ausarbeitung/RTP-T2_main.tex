@@ -123,7 +123,7 @@
             \subsection{PT$_2$-Glied}
 
                 \subsubsection{Explanation}
-                \todo[inline]{Check explanation of the PT2-Glied again, look into script}
+                %\todo[inline]{Check explanation of the PT2-Glied again, look into script}
                     
                     A PT$_2$-Glied is a second-order delay system that consists of a proportional element and a second-order part, which appears delayed and oscillatory behavior becuase of its second order differential nature. The transfer function of a PT$_2$-Glied is given by 
                     \begin{equation}
@@ -222,7 +222,7 @@
             \subsection{IT$_1$-Glied}
                 \subsubsection{Explanation}
                     The IT$_1$-Glied is a system that consists of an integrator and a first-order part. The transfer function of an IT$_1$-Glied is given by $G(s) = \frac{K_I}{s (T_1 s + 1)}$ \ref{eq:IT1}, where $K_I$ is the integral gain and $T_1$ is the time constant. It could be seen as a combination of an I-Glied and a PT$_1$-Glied. The transfer function can be rewritten as
-                    
+
                     \begin{equation}
                         h(t) = K_I \left[t-T_1\left(1-e^{-t/T_1}\right)\right]
                     \end{equation} 
@@ -289,21 +289,54 @@
                 \label{fig:sys0-pt1-identification}
             \end{figure}
 
-            \todo[inline]{add parameters}
-
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
 
-                \todo[inline]{add essential commands for PT1 identification}
+\begin{itemize}
+    \item \emph{Load measurement:}
+    \begin{lstlisting}
+data0 = np.loadtxt('data/sys0.csv', delimiter=',', skiprows=1)
+    \end{lstlisting}
+
+    \item \emph{Detect step trigger on the input:}
+    \begin{lstlisting}
+np.where((u[:-1] < 1.0) & (u[1:] >= 1.0))
+    \end{lstlisting}
+
+    \item \emph{Steady-state gain:}
+    \begin{lstlisting}
+K_p = (x_inf - x_0) / (u_inf - u_0)
+    \end{lstlisting}
+
+    \item \emph{Time constant} $T_1$ from the 63\,\% level: first index where the normalised rise reaches $1 - e^{-1}$; cross-checked at the 95\,\% level ($1 - e^{-3} \Rightarrow 3 T_1$):
+    \begin{lstlisting}
+rise = (x - x_0) / (x_inf - x_0)
+idx_63 = np.argmax(rise >= 1 - np.exp(-1))
+    \end{lstlisting}
+
+    \item \emph{Initial tangent slope:}
+    \begin{lstlisting}
+slope = K_p * du / T1
+    \end{lstlisting}
+
+    \item \emph{PT1 step model:}
+    \begin{lstlisting}
+x_model = x_0 + dx * (1 - np.exp(-(t - t_step) / T1))
+    \end{lstlisting}
+\end{itemize}
 
                 \subsubsection{Differential Equation}
-
-                \todo[inline]{add differential equation for PT1 system}
+                    The differential equation for a PT1 system can be derived from the transfer function and is given by
+                    \begin{equation}
+                        T_1 \dot{x}_a + x_a(t) = K_p x_e(t)
+                    \end{equation}
 
                 \subsubsection{Transfer Function}
-
-                \todo[inline]{add transfer function for PT1 system}
+                    The transfer function for a PT1 system can be derived from the differential equation and is given by
+                    \begin{equation}
+                        G(s) = \frac{K_p}{T_1 s + 1}
+                    \end{equation}
 
             \subsection{Realworld Example}
 
@@ -313,8 +346,14 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            The deviation between the measured response and the ideal PT1 model is small over the whole observation window. The residual is dominated by measurement noise that is symmetric around zero and shows no systematic trend, which indicates that the identified parameters $K_p$ and $T_1$ describe the system well and that no further dynamic component is missing from the model. The residual signal is shown in Figure~\ref{fig:sys0-polyfit-error}.
+            The deviation between the measured response and the ideal PT1 model is small over the whole observation window. The residual is dominated by measurement noise that is symmetric around zero and shows no systematic trend, which indicates that the identified parameters $K_p$ and $T_1$ describe the system well and that no further dynamic component is missing from the model. The deviation between the identified PT1 model $h(t) = K_p\,\Delta u\,(1 - e^{-t/T_1})$ and the measured response is shown in Figure~\ref{fig:sys0-pt1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys0-polyfit-error} for context.
 
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys0_pt1_deviation.pdf}
+                \caption{System 0 (PT1): measured response together with the identified PT1 model $h(t) = K_p\,\Delta u\,(1 - e^{-t/T_1})$ (top) and the resulting deviation (measured $-$ model) versus time (bottom).}
+                \label{fig:sys0-pt1-deviation}
+            \end{figure}
 
             \begin{figure}[ht]
                 \centering
@@ -334,18 +373,15 @@
 
                 The experimentally identified parameters for the PT2 system are as follows:
                 \begin{itemize}
-                    \item overshoot $h_{max}$: $28.37$
-                    \item over swing time $t_{max}$: $0.070\;\mathrm{s}$
-                    \item the damping ratio $D$: $0.254$
-                    \item the natural frequency $\omega_0$: $19.69\;\mathrm{1/s}$
-                    \item the periodic time of the oscillations $T_d$: $0.330\;\mathrm{s}$
-                    \item proportional gain $K_p$: $1.945$
-                    \item input pulse area $A_u$: $1.000$
+                    \item overshoot $h_{max}$: \num{2.837}
+                    \item over swing time $t_{max}$: \SI{0.160}{\second}
+                    \item the damping ratio $D$: \num{0.248}
+                    \item the natural frequency $\omega_0$: \SI{19.69}{\per\second}
+                    \item the periodic time of the oscillations $T_d$: \SI{0.320}{\second}
+                    \item proportional gain $K_p$: \num{1.986}
+                    \item input pulse area $A_u$: \num{1.000}
                 \end{itemize}
-                The corresponding identification plot, including the triangular input pulse, the measured impulse response, the underdamped PT2 model, the exponential envelope and the $t_\mathrm{max}$, $x_\mathrm{max}$ and $T_d$ markers, is shown in Figure~\ref{fig:sys1-pt2-identification}.
-
-
-            \todo[inline]{add parameters}
+                The corresponding identification plot, including the triangular input pulse, the measured impulse response, the periodic PT2 model, the exponential envelope and the $t_\mathrm{max}$, $x_\mathrm{max}$ and $T_d$ markers, is shown in Figure~\ref{fig:sys1-pt2-identification}.
 
             \begin{figure}[ht]
                 \centering
@@ -357,16 +393,68 @@
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
-                
-                \todo[inline]{add essential commands for PT2 identification}
+
+\begin{itemize}
+    \item \emph{Load measurement:}
+    \begin{lstlisting}
+data1 = np.loadtxt('data/sys1.csv', delimiter=',', skiprows=1)
+    \end{lstlisting}
+
+    \item \emph{Cumulative trapezoidal integration} (turns the impulse input into a step input and the impulse response into the corresponding step response):
+    \begin{lstlisting}
+cum = np.concatenate(([0.], np.cumsum(0.5 * (y[1:] + y[:-1]) * np.diff(t))))
+    \end{lstlisting}
+
+    \item \emph{Pulse area / step height:}
+    \begin{lstlisting}
+A_u = u_step[-1]
+    \end{lstlisting}
+
+    \item \emph{Static gain} from the integrated step response:
+    \begin{lstlisting}
+K_p = x_step_inf / A_u
+    \end{lstlisting}
+
+    \item \emph{First peak of the step response} ($\Rightarrow t_\mathrm{max}$, $x_\mathrm{max}$):
+    \begin{lstlisting}
+peak_idx = trigger_idx + np.argmax(x_step[trigger_idx:])
+    \end{lstlisting}
+
+    \item \emph{Overshoot:}
+    \begin{lstlisting}
+M_p = (x_peak - x_step_inf) / x_step_inf
+    \end{lstlisting}
+
+    \item \emph{Damping ratio} from the overshoot:
+    \begin{lstlisting}
+D = -np.log(M_p) / np.sqrt(np.pi**2 + np.log(M_p)**2)
+    \end{lstlisting}
+
+    \item \emph{Natural frequency} from $t_\mathrm{max}$, damped period $T_d$:
+    \begin{lstlisting}
+omega_0 = (np.pi / t_max) / np.sqrt(1 - D**2)
+T_d = 2 * np.pi / (omega_0 * np.sqrt(1 - D**2))
+    \end{lstlisting}
+
+    \item \emph{PT2 step model} with phase $\varphi$:
+    \begin{lstlisting}
+phi = np.arctan2(np.sqrt(1 - D**2), D)
+x_model = K_p * A_u * (1 - np.exp(-D * omega_0 * t) / np.sqrt(1 - D**2) * np.sin(omega_d * t + phi))
+    \end{lstlisting}
+\end{itemize}
+
 
                 \subsubsection{Differential Equation}
-
-                \todo[inline]{add differential equation for PT2 system}
+                    The differential equation for a PT2 system can be derived from the transfer function and is given by
+                    \begin{equation}
+                        \frac{1}{\omega_0^2} \ddot{x}_a + \frac{2D}{\omega_0} \dot{x}_a + x_a(t) = K_p x_e(t)
+                    \end{equation}
 
                 \subsubsection{Transfer Function}
-
-                \todo[inline]{add transfer function for PT2 system}
+                    The Transfer function for the PT2 system can be derived from the differential equation and is given by
+                    \begin{equation}
+                        G(s) = \frac{K_p}{\frac{1}{\omega_0^2} s^2 + \frac{2D}{\omega_0} s + 1}
+                    \end{equation}
 
             \subsection{Realworld Example}
 
@@ -375,7 +463,14 @@
 
             \subsection{Comparison of given System with the response of the identified system}
             
-                The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_p$ within the noise level. The residual signal is shown in Figure~\ref{fig:sys1-polyfit-error}.
+                The measured response and the ideal PT2 model agree well over most of the observation window, with the residual after the first oscillation dominated by measurement noise. Larger deviations are visible at the very beginning of the response: the excitation in the experiment is not an ideal Dirac impulse but a short triangular pulse of finite width, so the measured signal rises more gradually than the ideal impulse response and the first peak amplitude differs slightly from the model prediction. Once the impulse has passed, the damped oscillation matches the identified $D$, $\omega_0$ and $K_p$ within the noise level. The deviation between the integrated step response $\int x(\tau)\,d\tau$ and the identified PT2 model is shown in Figure~\ref{fig:sys1-pt2-deviation}; the residual against the polynomial reference fit of the impulse response is shown in Figure~\ref{fig:sys1-polyfit-error} for context.
+
+                \begin{figure}[ht]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys1_pt2_deviation.pdf}
+                    \caption{System 1 (PT2): integrated step response $\int x(\tau)\,d\tau$ together with the identified PT2 model $h(t) = K_p\,A_u\left[1 - \tfrac{e^{-D\omega_0 t}}{\sqrt{1 - D^2}}\sin(\omega_d t + \phi)\right]$ (top) and the resulting deviation versus time (bottom).}
+                    \label{fig:sys1-pt2-deviation}
+                \end{figure}
 
                 \begin{figure}[ht]
                     \centering
@@ -393,9 +488,9 @@
 
                 The experimentally identified parameters for the IT1 system are as follows:
                 \begin{itemize}
-                    \item Integral gain $K_I$: $0.300\;\mathrm{1/s}$
-                    \item Proportionalbeiwert $K_p$: $10$ (given)
-                    \item Time constant $T_1$: $0.493\;\mathrm{s}$
+                    \item Integral gain $K_I$: \SI{0.300}{\per\sec}
+                    \item Proportionalbeiwert $K_p$: \num{10} (given)
+                    \item Time constant $T_1$: \SI{0.493}{\sec}
                 \end{itemize}
                 The corresponding identification plot, including the input step, the measured response, the IT1 model, the pure-I reference $K_p\,K_I\!\int u\,dt$ and the asymptotic tangent with its time-axis intersection, is shown in Figure~\ref{fig:sys2-it1-identification}.
 
@@ -407,21 +502,60 @@
                 \label{fig:sys2-it1-identification}
             \end{figure}
             
-            \todo[inline]{add parameters}
-
             \subsection{Documentation of the results}
 
                 \subsubsection{Essential Commands}
 
-                \todo[inline]{add essential commands for IT1 identification}
+\begin{itemize}
+    \item \emph{Load measurement:}
+    \begin{lstlisting}
+data2 = np.loadtxt('data/sys2.csv', delimiter=',', skiprows=1)
+    \end{lstlisting}
+
+    \item \emph{Detect step trigger on the input:}
+    \begin{lstlisting}
+np.where((u[:-1] < 1.0) & (u[1:] >= 1.0))
+    \end{lstlisting}
+
+    \item \emph{Linear fit on the asymptotic tail} (last $\sim 25\,\%$ of samples):
+    \begin{lstlisting}
+slope_inf, intercept_inf = np.polyfit(t[tail:], x[tail:], 1)
+    \end{lstlisting}
+
+    \item \emph{Integral gain} from the asymptotic slope and the given $K_p = 10$:
+    \begin{lstlisting}
+K_I = slope_inf / (du * K_p_plant)
+    \end{lstlisting}
+
+    \item \emph{Time-axis intersection} of the asymptote:
+    \begin{lstlisting}
+t_intersect = -intercept_inf / slope_inf
+    \end{lstlisting}
+
+    \item \emph{Time constant} from the intersection:
+    \begin{lstlisting}
+T_1 = t_intersect - t_step
+    \end{lstlisting}
+
+    \item \emph{IT1 step model:}
+    \begin{lstlisting}
+x_model = x_0 + K_p * K_I * du * (tau - T_1 * (1 - np.exp(-tau / T_1)))
+    \end{lstlisting}
+
+    \item \emph{Pure-I reference} for visual comparison: cumulative trapezoidal of $u(t) - u_0$ scaled by $K_p \cdot K_I$.
+\end{itemize}
 
                 \subsubsection{Differential Equation}
-
-                \todo[inline]{add differential equation for IT1 system}
+                    The differential equation for an IT1 system can be derived from the transfer function and is given by
+                    \begin{equation}
+                        T_1 \dot{x}_a + x_a(t) = K_I \int_0^t x_e(t) dt
+                    \end{equation}
 
                 \subsubsection{Transfer Function}
-
-                \todo[inline]{add transfer function for IT1 system}
+                    The transfer function for an IT1 system can be derived from the differential equation and is given by
+                    \begin{equation}
+                        G(s) = \frac{K_I}{s (T_1 s + 1)}
+                    \end{equation}
 
             \subsection{Realworld Example}
 
@@ -432,7 +566,14 @@
 
             \subsection{Comparison of given System with the response of the identified system}
 
-            The measured response and the ideal IT1 model agree closely over the whole observation window. The remaining differences are dominated by measurement noise that is symmetric around zero and does not show a systematic trend, so the identified $K_I$ and $T_1$ describe the system well and no additional dynamic effect needs to be added to the model. The residual signal is shown in Figure~\ref{fig:sys2-polyfit-error}.
+            The measured response and the ideal IT1 model agree closely over the whole observation window. The remaining differences are dominated by measurement noise that is symmetric around zero and does not show a systematic trend, so the identified $K_I$ and $T_1$ describe the system well and no additional dynamic effect needs to be added to the model. The deviation between the identified IT1 model $h(t) = K_p\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ and the measured response is shown in Figure~\ref{fig:sys2-it1-deviation}; the residual against the polynomial reference fit is shown in Figure~\ref{fig:sys2-polyfit-error} for context.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.8\textwidth]{../02_Preperations/figure_out/sys2_it1_deviation.pdf}
+                \caption{System 2 (IT1): measured response together with the identified IT1 model $h(t) = K_p\,K_I\,\Delta u\,[t - T_1(1 - e^{-t/T_1})]$ (top) and the resulting deviation versus time (bottom).}
+                \label{fig:sys2-it1-deviation}
+            \end{figure}
 
             \begin{figure}[ht]
                 \centering
@@ -452,26 +593,25 @@
         \chapter{Appendix Frontmatter}
             
             \section{Declerations}\label{app:statutory}
-                \todo{Fillout erklarung}
-                    \begin{enumerate}
-                        \item Mir ist bekannt, dass dieses Exemplar als Prüfungsleistung in das Eigentum der Ostbayerischen Technischen Hochschule Regensburg übergeht.
-                        \item Ich erkläre hiermit, dass ich diese dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.
-                    \end{enumerate}
 
-                    \vskip22mm
-                    Regensburg, den 2026-04-29, \\Marius Off\hskip2cm $Matrikelnummer:$, \\Janis Graf\hskip2cm $Matrikelnummer:3377251$
-                    \vskip1mm
-                    \hrule
-                    \vskip1mm
-                    {\footnotesize Ort, Datum und Unterschrift}
+                \begin{enumerate}
+                    \item Ich erkläre hiermit, dass ich diese dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.
+                \end{enumerate}
 
-                    \vspace{12mm}
+                \vskip22mm
+                Regensburg, den 2026-04-29, \\
+                \hskip5cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
+                \hskip5cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
+                \vskip1mm
+                \hrule
+                \vskip1mm
+                {\footnotesize Ort, Datum und Unterschrift}
+
+                \vspace{12mm}
 
                 \cleardoublepage
 
             \listoffigures
-
-            \listoftables
 
 
 
